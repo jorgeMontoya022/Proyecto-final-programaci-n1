@@ -9,12 +9,10 @@ package co.edu.uniquindio.poo.torneodeportivo;
 
 import java.time.LocalDate;
 import java.util.logging.Logger;
-
-import static org.junit;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import org.junit.jupiter.api.Test;
 
 public class JugadorTest {
     /**
@@ -36,7 +34,7 @@ public class JugadorTest {
         var representante = new Persona("Robinson", "Pulgarin", "rpulgarin@email.com", "6067359300");
         var equipo = new Equipo("Uniquindio", representante);
         var jugador = new Jugador("Christian", "Candela", "chrcandela@email.com", "6067431234",
-                LocalDate.now().minusYears(15));
+                LocalDate.now().minusYears(15), GeneroJugador.MASCULINO);
 
         equipo.registrarJugador(jugador);
 
@@ -66,7 +64,7 @@ public class JugadorTest {
         var representante = new Persona("Robinson", "Pulgarin", "rpulgarin@email.com", "6067359300");
         var equipo = new Equipo("UniquindioFEM", representante);
         var jugador = new Jugador("Laura", "Garcia", "lauragarcia@email.com", "6067431234",
-                LocalDate.now().minusYears(15));
+                LocalDate.now().minusYears(15), GeneroJugador.FEMENINO);
 
         torneo.registrarParticipante(equipo);
         torneo.registrarJugador("UniquindioFEM", jugador);
@@ -98,7 +96,7 @@ public class JugadorTest {
         var representante = new Persona("Robinson", "Pulgarin", "rpulgarin@email.com", "6067359300");
         var equipo = new Equipo("UniquindioMasculino", representante);
         var jugador = new Jugador("Christian", "Candela", "chrcandela@email.com", "6038917552",
-                LocalDate.now().minusYears(21));
+                LocalDate.now().minusYears(21), GeneroJugador.MASCULINO);
 
         torneo.registrarParticipante(equipo);
         torneo.registrarJugador("UniquindioMasculino", jugador);
@@ -136,7 +134,7 @@ public class JugadorTest {
 
         var representante = new Persona("Robinson", "Pulgarin", "rpulgarin@email.com", "6067359300");
         var equipo = new Equipo("Uniquindio", representante);
-        var jugador = new Jugador("Ana", "Ruiz", "anaruiz@email.com", "6073861062", LocalDate.now().minusYears(21));
+        var jugador = new Jugador("Ana", "Ruiz", "anaruiz@email.com", "6073861062", LocalDate.now().minusYears(21), GeneroJugador.MASCULINO);
 
         torneo.registrarParticipante(equipo);
         assertThrows(Throwable.class, () -> torneo.registrarJugador("Uniquindio", jugador));

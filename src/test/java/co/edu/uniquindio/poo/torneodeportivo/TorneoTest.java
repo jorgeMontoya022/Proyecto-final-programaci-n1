@@ -10,8 +10,7 @@ package co.edu.uniquindio.poo.torneodeportivo;
 import static org.junit;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+
 
 
 import java.time.LocalDate;
