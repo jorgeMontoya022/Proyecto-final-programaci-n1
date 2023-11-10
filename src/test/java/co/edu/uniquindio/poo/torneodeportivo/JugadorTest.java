@@ -7,33 +7,36 @@
  */
 package co.edu.uniquindio.poo.torneodeportivo;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
 import java.time.LocalDate;
 import java.util.logging.Logger;
 
-import org.junit.jupiter.api.Test;
+import static org.junit;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class JugadorTest {
     /**
      * Instancia para el manejo de logs
      */
     private static final Logger LOG = Logger.getLogger(JugadorTest.class.getName());
-    
+
     /**
-     * Verificar que sea posible registrar un jugador en un equipo 
+     * Verificar que sea posible registrar un jugador en un equipo
      * 
      */
     @Test
     public void registrarJugadorEquipo() {
         LOG.info("Inicio de prueba registrarJugadorEquipo...");
-        // Almacenar los datos de prueba Equipo{Uniquindio} Representante{Robinson,Pulgarin,rpulgarin@email.com,6067359300}, Jugador {Christian,Candela,chrcandela@email.com,6067431234, fechaActual - 15 años}
+        // Almacenar los datos de prueba Equipo{Uniquindio}
+        // Representante{Robinson,Pulgarin,rpulgarin@email.com,6067359300}, Jugador
+        // {Christian,Candela,chrcandela@email.com,6067431234, fechaActual - 15 años}
 
         var representante = new Persona("Robinson", "Pulgarin", "rpulgarin@email.com", "6067359300");
         var equipo = new Equipo("Uniquindio", representante);
-        var jugador = new Jugador("Christian", "Candela", "chrcandela@email.com", "6067431234",LocalDate.now().minusYears(15));
+        var jugador = new Jugador("Christian", "Candela", "chrcandela@email.com", "6067431234",
+                LocalDate.now().minusYears(15));
 
         equipo.registrarJugador(jugador);
 
@@ -43,25 +46,30 @@ public class JugadorTest {
         LOG.info("Fin de prueba registrarJugadorEquipo...");
     }
 
-
     /**
-     * Verificar que sea posible registrar un jugador en un equipo desde el torneo 
+     * Verificar que sea posible registrar un jugador en un equipo desde el torneo
      * 
      */
     @Test
     public void registrarJugadorTorneo() {
         LOG.info("Inicio de prueba registrarJugadorTorneo...");
-        // Almacenar los datos de prueba Torneo{Copa Mundo\|fechaActual+ 1mes\| fechaActual - 15 días\|fechaActual+15 días\|24\|18\|0\|LOCAL|GRUPAL}  Equipo{Uniquindio} Representante{Robinson,Pulgarin,rpulgarin@email.com,6067359300}, Jugador {Christian,Candela,chrcandela@email.com,6067431234, fechaActual - 15 años}
+        // Almacenar los datos de prueba Torneo{Copa Mundo\|fechaActual+ 1mes\|
+        // fechaActual - 15 días\|fechaActual+15 días\|24\|18\|0\|LOCAL|FEMENINO|GRUPAL}
+        // Equipo{UniquindioFEM}
+        // Representante{Robinson,Pulgarin,rpulgarin@email.com,6067359300}, Jugador
+        // {Laura,Garcia,lauragarcia@email.com,6067431234, fechaActual - 15 años}
 
-        
-        Torneo torneo = new Torneo("Copa Mundo", LocalDate.now().plusMonths(1), LocalDate.now().minusDays(15), LocalDate.now().plusDays(15), (byte)24, (byte)18, 0,TipoTorneo.LOCAL,CaracterTorneo.GRUPAL);
+        Torneo torneo = new Torneo("Copa Mundo", LocalDate.now().plusMonths(1), LocalDate.now().minusDays(15),
+                LocalDate.now().plusDays(15), (byte) 24, (byte) 18, 0, TipoTorneo.LOCAL, CaracterTorneo.GRUPAL,
+                TorneoGenero.MASCULINO);
 
         var representante = new Persona("Robinson", "Pulgarin", "rpulgarin@email.com", "6067359300");
-        var equipo = new Equipo("Uniquindio", representante);
-        var jugador = new Jugador("Christian", "Candela", "chrcandela@email.com", "6067431234",LocalDate.now().minusYears(15));
+        var equipo = new Equipo("UniquindioFEM", representante);
+        var jugador = new Jugador("Laura", "Garcia", "lauragarcia@email.com", "6067431234",
+                LocalDate.now().minusYears(15));
 
         torneo.registrarParticipante(equipo);
-        torneo.registrarJugador("Uniquindio",jugador);
+        torneo.registrarJugador("UniquindioFEM", jugador);
 
         // Recuperación y verificación de datos
         assertTrue(equipo.jugadores().contains(jugador));
@@ -70,23 +78,30 @@ public class JugadorTest {
     }
 
     /**
-     * Verificar que sea posible registrar un jugador en un equipo desde el torneo cuando el torneo no tiene limite de edad
+     * Verificar que sea posible registrar un jugador en un equipo desde el torneo
+     * cuando el torneo no tiene limite de edad
      * 
      */
     @Test
     public void registrarJugadorTorneoSinLimiteEdad() {
         LOG.info("Inicio de prueba registrarJugadorTorneoSinLimiteEdad...");
-        // Almacenar los datos de prueba Torneo{Copa Mundo\|fechaActual+ 1mes\| fechaActual - 15 días\|fechaActual+15 días\|24\|0\|0\|LOCAL|GRUPAL}  Equipo{Uniquindio} Representante{Robinson,Pulgarin,rpulgarin@email.com,6067359300}, Jugador {Christian,Candela,chrcandela@email.com,6067431234, fechaActual - 21 años}
+        // Almacenar los datos de prueba Torneo{Copa Mundo\|fechaActual+ 1mes\|
+        // fechaActual - 15 días\|fechaActual+15 días\|24\|0\|0\|LOCAL|MASCULINO|GRUPAL}
+        // Equipo{UniquindioMasculino}
+        // Representante{Robinson,Pulgarin,rpulgarin@email.com,6067359300}, Jugador
+        // {Christian,Candela,chrcandela@email.com,6038917552, fechaActual - 21 años}
 
-        
-        Torneo torneo = new Torneo("Copa Mundo", LocalDate.now().plusMonths(1), LocalDate.now().minusDays(15), LocalDate.now().plusDays(15), (byte)24, (byte)0, 0,TipoTorneo.LOCAL,CaracterTorneo.GRUPAL);
+        Torneo torneo = new Torneo("Copa Mundo", LocalDate.now().plusMonths(1), LocalDate.now().minusDays(15),
+                LocalDate.now().plusDays(15), (byte) 24, (byte) 0, 0, TipoTorneo.LOCAL, CaracterTorneo.GRUPAL,
+                TorneoGenero.MASCULINO);
 
         var representante = new Persona("Robinson", "Pulgarin", "rpulgarin@email.com", "6067359300");
-        var equipo = new Equipo("Uniquindio", representante);
-        var jugador = new Jugador("Christian", "Candela", "chrcandela@email.com", "6067431234",LocalDate.now().minusYears(21));
+        var equipo = new Equipo("UniquindioMasculino", representante);
+        var jugador = new Jugador("Christian", "Candela", "chrcandela@email.com", "6038917552",
+                LocalDate.now().minusYears(21));
 
         torneo.registrarParticipante(equipo);
-        torneo.registrarJugador("Uniquindio",jugador);
+        torneo.registrarJugador("UniquindioMasculino", jugador);
 
         // Recuperación y verificación de datos
         assertTrue(equipo.jugadores().contains(jugador));
@@ -95,74 +110,99 @@ public class JugadorTest {
     }
 
     /**
-     * Verificar que no sea posible registrar un jugador en un equipo desde el torneo cuando el torneo con limite de edad
+     * Verificar que no sea posible registrar un jugador en un equipo desde el
+     * torneo cuando el torneo con limite de edad
      * 
-     * NOTA: Si el registro se hiciera desde el equipo sería posible de momento registrar el jugador, debido a que el torneo no tiene control sobre el código interno del equipo, esto se puede solucionar validando todos los equipos al momento de iniciar un torneo. O se podría aplicar el patron de diseño listener para que torneo sea advertido cuando se haga una modificación en la lista de jugadores del equipo.
+     * NOTA: Si el registro se hiciera desde el equipo sería posible de momento
+     * registrar el jugador, debido a que el torneo no tiene control sobre el código
+     * interno del equipo, esto se puede solucionar validando todos los equipos al
+     * momento de iniciar un torneo. O se podría aplicar el patron de diseño
+     * listener para que torneo sea advertido cuando se haga una modificación en la
+     * lista de jugadores del equipo.
      * 
      */
     @Test
     public void registrarJugadorTorneoConLimiteEdad() {
         LOG.info("Inicio de prueba registrarJugadorTorneoConLimiteEdad...");
-        // Almacenar los datos de prueba Torneo{Copa Mundo\|fechaActual+ 1mes\| fechaActual - 15 días\|fechaActual+15 días\|24\|18\|0\|LOCAL|GRUPAL}  Equipo{Uniquindio} Representante{Robinson,Pulgarin,rpulgarin@email.com,6067359300}, Jugador {Christian,Candela,chrcandela@email.com,6067431234, fechaActual - 21 años}
+        // Almacenar los datos de prueba Torneo{Copa Mundo\|fechaActual+ 1mes\|
+        // fechaActual - 15 días\|fechaActual+15 días\|24\|18\|0\|LOCAL|MIXTO|GRUPAL}
+        // Equipo{Uniquindio}
+        // Representante{Robinson,Pulgarin,rpulgarin@email.com,6067359300}, Jugador
+        // {Ana,Ruiz,anaruiz@email.com,6073861062, fechaActual - 21 años}
 
-        
-        Torneo torneo = new Torneo("Copa Mundo", LocalDate.now().plusMonths(1), LocalDate.now().minusDays(15), LocalDate.now().plusDays(15), (byte)24, (byte)18, 0,TipoTorneo.LOCAL,CaracterTorneo.GRUPAL);
+        Torneo torneo = new Torneo("Copa Mundo", LocalDate.now().plusMonths(1), LocalDate.now().minusDays(15),
+                LocalDate.now().plusDays(15), (byte) 24, (byte) 18, 0, TipoTorneo.LOCAL, CaracterTorneo.GRUPAL,
+                TorneoGenero.MASCULINO);
 
         var representante = new Persona("Robinson", "Pulgarin", "rpulgarin@email.com", "6067359300");
         var equipo = new Equipo("Uniquindio", representante);
-        var jugador = new Jugador("Christian", "Candela", "chrcandela@email.com", "6067431234",LocalDate.now().minusYears(21));
+        var jugador = new Jugador("Ana", "Ruiz", "anaruiz@email.com", "6073861062", LocalDate.now().minusYears(21));
 
         torneo.registrarParticipante(equipo);
-        assertThrows(Throwable.class,()->torneo.registrarJugador("Uniquindio",jugador));
+        assertThrows(Throwable.class, () -> torneo.registrarJugador("Uniquindio", jugador));
 
-        
         LOG.info("Fin de prueba registrarJugadorTorneoConLimiteEdad...");
     }
 
     /**
-     * Verificar que no sea posible registrar un jugador en un equipo si las inscripciones ya cerraron
+     * Verificar que no sea posible registrar un jugador en un equipo si las
+     * inscripciones ya cerraron
      * 
-     * NOTA: Si el registro se hiciera desde el equipo sería posible de momento registrar el jugador, debido a que el torneo no tiene control sobre el código interno del equipo, esto se puede solucionar validando todos los equipos al momento de iniciar un torneo. O se podría aplicar el patron de diseño listener para que torneo sea advertido cuando se haga una modificación en la lista de jugadores del equipo.
+     * NOTA: Si el registro se hiciera desde el equipo sería posible de momento
+     * registrar el jugador, debido a que el torneo no tiene control sobre el código
+     * interno del equipo, esto se puede solucionar validando todos los equipos al
+     * momento de iniciar un torneo. O se podría aplicar el patron de diseño
+     * listener para que torneo sea advertido cuando se haga una modificación en la
+     * lista de jugadores del equipo.
      * 
      */
     @Test
     public void registrarJugadorTorneoInscripcionesCerradas() {
         LOG.info("Inicio de prueba registrarJugadorTorneoInscripcionesCerradas...");
-        // Almacenar los datos de prueba Torneo{Copa Mundo\|fechaActual+ 1mes\| fechaActual - 15 días\|fechaActual-1 día\|24\|18\|0\|LOCAL|GRUPAL}  Equipo{Uniquindio} Representante{Robinson,Pulgarin,rpulgarin@email.com,6067359300} Jugador {Christian,Candela,chrcandela@email.com,6067431234, fechaActual - 15 años}
+        // Almacenar los datos de prueba Torneo{Copa Mundo\|fechaActual+ 1mes\|
+        // fechaActual - 15 días\|fechaActual-1 día\|24\|18\|0\|LOCAL|MIXTO|GRUPAL}
+        // Equipo{Uniquindio}
+        // Representante{Robinson,Pulgarin,rpulgarin@email.com,6067359300} Jugador
+        // {Ana,Ruiz,anaruiz@email.com,6073861062, fechaActual - 15 años}
 
-        
-        Torneo torneo = new Torneo("Copa Mundo", LocalDate.now().plusMonths(1), LocalDate.now().minusDays(15), LocalDate.now().plusDays(1), (byte)24, (byte)18, 0,TipoTorneo.LOCAL,CaracterTorneo.GRUPAL);
+        Torneo torneo = new Torneo("Copa Mundo", LocalDate.now().plusMonths(1), LocalDate.now().minusDays(15),
+                LocalDate.now().plusDays(1), (byte) 24, (byte) 18, 0, TipoTorneo.LOCAL, CaracterTorneo.GRUPAL,
+                TorneoGenero.FEMENINO);
 
         var representante = new Persona("Robinson", "Pulgarin", "rpulgarin@email.com", "6067359300");
         var equipo = new Equipo("Uniquindio", representante);
-        var jugador = new Jugador("Christian", "Candela", "chrcandela@email.com", "6067431234",LocalDate.now().minusYears(15));
+        var jugador = new Jugador("Ana", "Ruiz", "anaruiz@email.com", "6073861062", LocalDate.now().minusYears(15), GeneroJugador.FEMENINO);
 
         torneo.registrarParticipante(equipo);
         torneo.setFechaCierreInscripciones(LocalDate.now().minusDays(1));
-        assertThrows(Throwable.class,()->torneo.registrarJugador("Uniquindio",jugador));
+        assertThrows(Throwable.class, () -> torneo.registrarJugador("Uniquindio", jugador));
 
-        
         LOG.info("Fin de prueba registrarJugadorTorneoInscripcionesCerradas...");
     }
 
     /**
-     * Verificar que no sea posible registrar dos jugadores con el mismo nombre y apellido en un mismo  equipo 
+     * Verificar que no sea posible registrar dos jugadores con el mismo nombre y
+     * apellido en un mismo equipo
      * 
      */
     @Test
     public void registrarJugadoresRepetidosEquipo() {
         LOG.info("Inicio de prueba registrarJugadorEquipo...");
-        // Almacenar los datos de prueba Equipo{Uniquindio} Representante{Robinson,Pulgarin,rpulgarin@email.com,6067359300}, Jugador {Christian,Candela,chrcandela@email.com,6067431234, fechaActual - 15 años}
+        // Almacenar los datos de prueba Equipo{Uniquindio}
+        // Representante{Robinson,Pulgarin,rpulgarin@email.com,6067359300}, Jugador
+        // {Christian,Candela,chrcandela@email.com,6067431234, fechaActual - 15 años}
 
         var representante = new Persona("Robinson", "Pulgarin", "rpulgarin@email.com", "6067359300");
-        var equipo = new Equipo("Uniquindio", representante);
-        var jugador = new Jugador("Christian", "Candela", "chrcandela@email.com", "6067431234",LocalDate.now().minusYears(15));
-        var jugador2 = new Jugador("Christian", "Candela", "ccandela@email.com", "6067431235",LocalDate.now().minusYears(15));
+        var equipo = new Equipo("UniquindioMasculino", representante);
+        var jugador = new Jugador("Christian", "Candela", "chrcandela@email.com", "6067431234",
+                LocalDate.now().minusYears(15), GeneroJugador.MASCULINO);
+        var jugador2 = new Jugador("Christian", "Candela", "ccandela@email.com", "6067431235",
+                LocalDate.now().minusYears(15), GeneroJugador.MASCULINO);
         equipo.registrarJugador(jugador);
-        assertThrows(Throwable.class,()->equipo.registrarJugador(jugador2));
+        assertThrows(Throwable.class, () -> equipo.registrarJugador(jugador2));
 
         // Recuperación y verificación de datos
-        
+
         LOG.info("Fin de prueba registrarJugadorEquipo...");
     }
 
@@ -173,40 +213,40 @@ public class JugadorTest {
     @Test
     public void registrarJugadoresRepetidosTorneo() {
         LOG.info("Inicio de prueba registrarJugadoresRepetidosTorneo...");
-        // Almacenar los datos de prueba Torneo{Copa Mundo\|fechaActual+ 1mes\| fechaActual - 15 días\|fechaActual+15 días\|24\|18\|0\|LOCAL|GRUPAL}  Equipo{Uniquindio} Representante{Robinson,Pulgarin,rpulgarin@email.com,6067359300},  Jugador {Christian,Candela,chrcandela@email.com,6067431234, fechaActual - 15 años}, Jugador {Christian,Candela,chrcandela@email.com,6067431234, fechaActual - 15 años}, Equipo{Quindío}
+        // Almacenar los datos de prueba Torneo{Copa Mundo\|fechaActual+ 1mes\| fechaActual - 15 días\|fechaActual+15 días\|24\|18\|0\|LOCAL|FEMENINO|GRUPAL}  Equipo{UniquindioFEM} Representante{Robinson,Pulgarin,rpulgarin@email.com,6067359300},  Jugador {Laura,Garcia,lauragarcia@email.com,6067431234, fechaActual - 15 años}, Jugador {Laura,Garcia,lauragarcia@email.com,6067431234, fechaActual - 15 años}, Equipo{QuindíoFEM}
 
-        var torneo = new Torneo("Copa Mundo", LocalDate.now().plusMonths(1), LocalDate.now().minusDays(15), LocalDate.now().plusDays(15), (byte)24, (byte)18, 0,TipoTorneo.LOCAL,CaracterTorneo.GRUPAL);
+         var torneo = new Torneo("Copa Mundo", LocalDate.now().plusMonths(1), LocalDate.now().minusDays(15), LocalDate.now().plusDays(15), (byte)24, (byte)18, 0,TipoTorneo.LOCAL, CaracterTorneo.GRUPAL, TorneoGenero.FEMENINO);
 
         var representante = new Persona("Robinson", "Pulgarin", "rpulgarin@email.com", "6067359300");
-        var equipo = new Equipo("Uniquindio", representante);
-        var equipo2 = new Equipo("Quindío", representante);
+        var equipo = new Equipo("UniquindioFEM", representante);
+        var equipo2 = new Equipo("QuindíoFEM", representante);
         torneo.registrarParticipante(equipo);
         torneo.registrarParticipante(equipo2);
 
-        var jugador = new Jugador("Christian", "Candela", "chrcandela@email.com", "6067431234",LocalDate.now().minusYears(15));
-        var jugador2 = new Jugador("Christian", "Candela", "ccandela@email.com", "6067431235",LocalDate.now().minusYears(15));
+        var jugador = new Jugador("Laura", "Garcia", "lauragarcia@email.com", "6067431234",LocalDate.now().minusYears(15), GeneroJugador.FEMENINO);
+        var jugador2 = new Jugador("Laura", "Garcia", "lauragarcia@email.com", "6067431234",LocalDate.now().minusYears(15),GeneroJugador.FEMENINO);
                 
-        torneo.registrarJugador("Uniquindio",jugador);
-        assertThrows(Throwable.class,()->torneo.registrarJugador("Quindío",jugador2));
+        torneo.registrarJugador("UniquindioFEM",jugador);
+        assertThrows(Throwable.class,()->torneo.registrarJugador("QuindíoFEM",jugador2));
 
         // Recuperación y verificación de datos
         
-        LOG.info("Fin de prueba registrarJugadoresRepetidosTorneo...");
-    }
+    } 
+
     
     @Test
     public void registrarJugadorGeneroNoPermitido(){
-         var torneo = new Torneo("Copa Mundo", LocalDate.now().plusMonths(1), LocalDate.now().minusDays(15), LocalDate.now().plusDays(15), (byte)24, (byte)18, 0,TipoTorneo.LOCAL,CaracterTorneo.GRUPAL);
+        var torneo = new Torneo("Copa Mundo", LocalDate.now().plusMonths(1), LocalDate.now().minusDays(15), LocalDate.now().plusDays(15), (byte)24, (byte)18, 0,TipoTorneo.LOCAL, CaracterTorneo.GRUPAL, TorneoGenero.MASCULINO);
 
-         var representante = new Persona("Daniel", "Cubillos", "dCubillos@email.com", "6067359300");
+        var representante = new Persona("Jorge", "Montoya", "jmontoyaw@email.com", "6067359300");
 
-         var equipo = new Equipo("Real Quindío", representante);
+        var equipo = new Equipo("Real Quindío", representante);
+
+        var jugador = new Jugador("Sofía", "Alzate", "alzateS@gmail.com", "3243256776", LocalDate.now().minusYears(18), GeneroJugador.FEMENINO);
          
-         torneo.registrarParticipante(equipo);
-
+        assertThrows(Throwable.class, ()->torneo.registrarJugador(equipo, jugador));
 
     }
-
 
 
 }

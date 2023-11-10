@@ -13,15 +13,20 @@ import static co.edu.uniquindio.poo.util.AssertionUtil.ASSERTION;
 
 public class Jugador extends Persona implements Participante {
     private final LocalDate fechaNacimiento;
+    private final GeneroJugador generoJugador;
 
-    public Jugador(String nombre, String apellido, String email, String celular, LocalDate fechaNacimiento) {
+    public Jugador(String nombre, String apellido, String email, String celular, LocalDate fechaNacimiento, GeneroJugador generoJugador) {
         super(nombre, apellido, email, celular);
         ASSERTION.assertion( fechaNacimiento != null , "La fecha de nacimiento es requerida");
         this.fechaNacimiento = fechaNacimiento;
+        this.generoJugador = generoJugador;
     }
 
     public LocalDate getFechaNacimiento() {
         return fechaNacimiento;
+    }
+    public GeneroJugador getGeneroJugador(){
+        return generoJugador;
     }
     
     /**
