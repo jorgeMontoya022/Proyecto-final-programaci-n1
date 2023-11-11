@@ -7,29 +7,27 @@ import static co.edu.uniquindio.poo.util.AssertionUtil.ASSERTION;
 import java.time.LocalDate;
 
 public class Enfrentamientos {
-    private String nombre;
     private String lugar;
     private LocalDate fechaHora;
     private List<Equipo> equipos;
     private List<Juez> jueces;
     private Resultado resultado;
-    private EstadoEnfrentamiento estado;
+    private EstadoEnfrentamientos estado;
 
-    public Enfrentamiento (String nombre, String lugar, LocalDate fechaHora, List<Equipo> equipos, List<Juez> jueces) {
+    public Enfrentamientos (String nombre, String lugar, LocalDate fechaHora, List<Equipo> equipos, List<Juez> jueces) {
 
         ASSERTION.assertion(nombre != null, "El nombre es requerido");
         ASSERTION.assertion(lugar != null, "El nombre del lugar es requerido");
-        ASSERTION.assertion(fechaHora = );
-        ASSERTION.assertion(equipos >=0, "El numero de equipos debe ser mayor a cero");
+        ASSERTION.assertion(fechaHora != null, "La fecha y hora son requeridas");
+        ASSERTION.assertion(equipos!= null && !equipos.isEmpty(), "El numero de equipos debe ser mayor a cero");
         ASSERTION.assertion(jueces != null, "El nombre es requerido");
-        ASSERTION.assertion(resultado >=0, "El puntaje no puede ser negativo");
+        ASSERTION.assertion(resultado !=null, "El puntaje no puede ser negativo");
 
-        this.nombre = nombre;
         this.lugar = lugar;
         this.fechaHora = fechaHora;
         this.equipos = equipos;
         this.jueces = jueces;
-        this.estado = EstadoEnfrentamiento.PENDIENTE;
+        this.estado = EstadoEnfrentamientos.PENDIENTE;
     }
 
     public String getLugar() {
@@ -72,11 +70,11 @@ public class Enfrentamientos {
         this.resultado = resultado;
     }
 
-    public EstadoEnfrentamiento getEstado() {
+    public EstadoEnfrentamientos getEstado() {
         return estado;
     }
 
-    public void setEstado(EstadoEnfrentamiento estado) {
+    public void setEstado(EstadoEnfrentamientos estado) {
         this.estado = estado;
     }
 
@@ -104,6 +102,8 @@ public class Enfrentamientos {
         public void setPuntosEquipo2(int puntosEquipo2) {
             this.puntosEquipo2 = puntosEquipo2;
         }
+    }
+    
 }
 
  
