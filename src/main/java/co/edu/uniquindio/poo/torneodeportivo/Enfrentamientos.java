@@ -19,7 +19,53 @@ public class Enfrentamientos {
         this.estado = EstadoEnfrentamiento.PENDIENTE;
     }
 
-    //Faltan los getters y setters
+    public String getLugar() {
+        return lugar;
+    }
+
+    public void setLugar(String lugar) {
+        this.lugar = lugar;
+    }
+
+    public LocalDate getFechaHora() {
+        return fechaHora;
+    }
+
+    public void setFechaHora(LocalDate fechaHora) {
+        this.fechaHora = fechaHora;
+    }
+
+    public List<Equipo> getEquipos() {
+        return equipos;
+    }
+
+    public void setEquipos(List<Equipo> equipos) {
+        this.equipos = equipos;
+    }
+
+    public List<Juez> getJueces() {
+        return jueces;
+    }
+
+    public void setJueces(List<Juez> jueces) {
+        this.jueces = jueces;
+    }
+
+    public Resultado getResultado() {
+        return resultado;
+    }
+
+    public void setResultado(Resultado resultado) {
+        this.resultado = resultado;
+    }
+
+    public EstadoEnfrentamiento getEstado() {
+        return estado;
+    }
+
+    public void setEstado(EstadoEnfrentamiento estado) {
+        this.estado = estado;
+    }
 
     public class Resultado {
         private int puntosEquipo1;
@@ -46,3 +92,5 @@ public class Enfrentamientos {
             this.puntosEquipo2 = puntosEquipo2;
         }
 }
+
+ 
