@@ -1,9 +1,13 @@
 package co.edu.uniquindio.poo.torneodeportivo;
 
 import java.util.List;
+
+import static co.edu.uniquindio.poo.util.AssertionUtil.ASSERTION;
+
 import java.time.LocalDate;
 
 public class Enfrentamientos {
+    private String nombre;
     private String lugar;
     private LocalDate fechaHora;
     private List<Equipo> equipos;
@@ -11,7 +15,16 @@ public class Enfrentamientos {
     private Resultado resultado;
     private EstadoEnfrentamiento estado;
 
-    public Enfrentamiento(String lugar, LocalDate fechaHora, List<Equipo> equipos, List<Juez> jueces) {
+    public Enfrentamiento (String nombre, String lugar, LocalDate fechaHora, List<Equipo> equipos, List<Juez> jueces) {
+
+        ASSERTION.assertion(nombre != null, "El nombre es requerido");
+        ASSERTION.assertion(lugar != null, "El nombre del lugar es requerido");
+        ASSERTION.assertion(fechaHora = );
+        ASSERTION.assertion(equipos >=0, "El numero de equipos debe ser mayor a cero");
+        ASSERTION.assertion(jueces != null, "El nombre es requerido");
+        ASSERTION.assertion(resultado >=0, "El puntaje no puede ser negativo");
+
+        this.nombre = nombre;
         this.lugar = lugar;
         this.fechaHora = fechaHora;
         this.equipos = equipos;
