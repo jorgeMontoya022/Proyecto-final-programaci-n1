@@ -1,34 +1,45 @@
 package co.edu.uniquindio.poo.torneodeportivo;
 
-import java.util.List;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+
 
 import static co.edu.uniquindio.poo.util.AssertionUtil.ASSERTION;
 
 import java.time.LocalDate;
 
 public class Enfrentamientos {
+    private final String direccion;
     private String lugar;
     private LocalDate fechaHora;
-    private List<Equipo> equipos;
-    private List<Juez> jueces;
+    private Equipo equipoLocal;
+    private Equipo equipoVisitante;
+    private Collection<Juez> jueces;
     private Resultado resultado;
     private EstadoEnfrentamientos estado;
 
-    public Enfrentamientos (String nombre, String lugar, LocalDate fechaHora, List<Equipo> equipos, List<Juez> jueces) {
+    public Enfrentamientos (String direccion, String lugar, LocalDate fechaHora,Equipo equipoLocal,Equipo equipoVisitante, EstadoEnfrentamientos estado) {
 
-        ASSERTION.assertion(nombre != null, "El nombre es requerido");
+        ASSERTION.assertion(direccion != null, "La dirección es requerida");
+        ASSERTION.assertion(equipoLocal != null, "El equipo local es requerido");
+        ASSERTION.assertion(equipoVisitante != null, "El equipo visitante es requerido");
         ASSERTION.assertion(lugar != null, "El nombre del lugar es requerido");
         ASSERTION.assertion(fechaHora != null, "La fecha y hora son requeridas");
-        ASSERTION.assertion(equipos!= null && !equipos.isEmpty(), "El numero de equipos debe ser mayor a cero");
         ASSERTION.assertion(jueces != null, "El nombre es requerido");
         ASSERTION.assertion(resultado !=null, "El puntaje no puede ser negativo");
 
+        this.direccion = direccion;
         this.lugar = lugar;
         this.fechaHora = fechaHora;
-        this.equipos = equipos;
-        this.jueces = jueces;
-        this.estado = EstadoEnfrentamientos.PENDIENTE;
+        this.equipoLocal = equipoLocal;
+        this.equipoVisitante = equipoVisitante;
+        this.jueces = new ArrayList<>();
+        this.estado = estado;
+
+        
     }
+
 
     public String getLugar() {
         return lugar;
@@ -42,23 +53,33 @@ public class Enfrentamientos {
         return fechaHora;
     }
 
+    
+
+    public String getDireccion() {
+        return direccion;
+    }
+
+
+    public Equipo getEquipoLocal() {
+        return equipoLocal;
+    }
+
+
+    public Equipo getEquipoVisitante() {
+        return equipoVisitante;
+    }
+
+
     public void setFechaHora(LocalDate fechaHora) {
         this.fechaHora = fechaHora;
     }
 
-    public List<Equipo> getEquipos() {
-        return equipos;
+  
+    public Collection<Juez> getJueces() {
+        return Collections.unmodifiableCollection(jueces);
     }
 
-    public void setEquipos(List<Equipo> equipos) {
-        this.equipos = equipos;
-    }
-
-    public List<Juez> getJueces() {
-        return jueces;
-    }
-
-    public void setJueces(List<Juez> jueces) {
+    public void setJueces(Collection<Juez> jueces) {
         this.jueces = jueces;
     }
 
@@ -78,31 +99,6 @@ public class Enfrentamientos {
         this.estado = estado;
     }
 
-    public class Resultado {
-        private int puntosEquipo1;
-        private int puntosEquipo2;
-
-        public Resultado(int puntosEquipo1, int puntosEquipo2) {
-        this.puntosEquipo1 = puntosEquipo1;
-        this.puntosEquipo2 = puntosEquipo2;
-    }
-
-        public int getPuntosEquipo1() {
-            return puntosEquipo1;
-        }
-
-        public void setPuntosEquipo1(int puntosEquipo1) {
-            this.puntosEquipo1 = puntosEquipo1;
-        }
-
-        public int getPuntosEquipo2() {
-            return puntosEquipo2;
-        }
-
-        public void setPuntosEquipo2(int puntosEquipo2) {
-            this.puntosEquipo2 = puntosEquipo2;
-        }
-    }
     
 }
 

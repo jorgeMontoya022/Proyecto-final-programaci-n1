@@ -33,8 +33,7 @@ public class Torneo {
     public Torneo(String nombre, LocalDate fechaInicio,
             LocalDate fechaInicioInscripciones,
             LocalDate fechaCierreInscripciones, byte numeroParticipantes,
-            byte limiteEdad, int valorInscripcion, TipoTorneo tipoTorneo, CaracterTorneo caracter,
-            TorneoGenero torneoGenero) {
+            byte limiteEdad, int valorInscripcion, TipoTorneo tipoTorneo, CaracterTorneo caracter, TorneoGenero torneoGenero) {
 
         ASSERTION.assertion(nombre != null, "El nombre es requerido");
 
