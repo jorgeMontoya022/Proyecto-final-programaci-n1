@@ -297,6 +297,9 @@ public class Torneo {
         // Devolver la colección de enfrentamientos relacionados con el equipo dado.
         return ListaEnfrentamientoEquipo;
     }
+
+
+    
     
   
 }
