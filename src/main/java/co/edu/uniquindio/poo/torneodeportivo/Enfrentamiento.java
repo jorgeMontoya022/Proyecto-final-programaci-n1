@@ -4,12 +4,11 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 
-
 import static co.edu.uniquindio.poo.util.AssertionUtil.ASSERTION;
 
 import java.time.LocalDate;
 
-public class Enfrentamientos {
+public class Enfrentamiento {
     private final String direccion;
     private String lugar;
     private LocalDate fechaHora;
@@ -19,7 +18,8 @@ public class Enfrentamientos {
     private Resultado resultado;
     private EstadoEnfrentamientos estado;
 
-    public Enfrentamientos (String direccion, String lugar, LocalDate fechaHora,Equipo equipoLocal,Equipo equipoVisitante, EstadoEnfrentamientos estado) {
+    public Enfrentamiento(String direccion, String lugar, LocalDate fechaHora, Equipo equipoLocal,
+            Equipo equipoVisitante, EstadoEnfrentamientos estado) {
 
         ASSERTION.assertion(direccion != null, "La dirección es requerida");
         ASSERTION.assertion(equipoLocal != null, "El equipo local es requerido");
@@ -27,7 +27,7 @@ public class Enfrentamientos {
         ASSERTION.assertion(lugar != null, "El nombre del lugar es requerido");
         ASSERTION.assertion(fechaHora != null, "La fecha y hora son requeridas");
         ASSERTION.assertion(jueces != null, "El nombre es requerido");
-        ASSERTION.assertion(resultado !=null, "El puntaje no puede ser negativo");
+        ASSERTION.assertion(resultado != null, "El puntaje no puede ser negativo");
 
         this.direccion = direccion;
         this.lugar = lugar;
@@ -37,9 +37,7 @@ public class Enfrentamientos {
         this.jueces = new ArrayList<>();
         this.estado = estado;
 
-        
     }
-
 
     public String getLugar() {
         return lugar;
@@ -53,28 +51,22 @@ public class Enfrentamientos {
         return fechaHora;
     }
 
-    
-
     public String getDireccion() {
         return direccion;
     }
-
 
     public Equipo getEquipoLocal() {
         return equipoLocal;
     }
 
-
     public Equipo getEquipoVisitante() {
         return equipoVisitante;
     }
-
 
     public void setFechaHora(LocalDate fechaHora) {
         this.fechaHora = fechaHora;
     }
 
-  
     public Collection<Juez> getJueces() {
         return Collections.unmodifiableCollection(jueces);
     }
@@ -99,7 +91,4 @@ public class Enfrentamientos {
         this.estado = estado;
     }
 
-    
 }
-
- 

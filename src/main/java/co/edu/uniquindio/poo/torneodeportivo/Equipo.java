@@ -14,10 +14,16 @@ import java.util.function.Predicate;
 
 import static co.edu.uniquindio.poo.util.AssertionUtil.ASSERTION;
 
-public record Equipo(String nombre, Persona representante, Collection<Jugador> jugadores) implements Participante {
+public record Equipo(String nombre, Persona representante, Collection<Jugador> jugadores ) implements Participante {
+    
+
+    
+
+
     public Equipo {
         ASSERTION.assertion(nombre != null && !nombre.isBlank(), "El nombre es requerido");
         ASSERTION.assertion(representante != null, "El representante es requerido");
+        
     }
 
     public Equipo(String nombre, Persona representante) {
@@ -75,4 +81,5 @@ public record Equipo(String nombre, Persona representante, Collection<Jugador> j
     public String getNombreCompleto() {
         return nombre;
     }
-}
+   
+}   
