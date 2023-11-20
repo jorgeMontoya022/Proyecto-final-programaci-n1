@@ -55,7 +55,7 @@ public class TorneoTest {
     public void datosNulos() {
         LOG.info("Inicio de prueba datos nulos...");
         // Almacenar los datos de prueba null|null|null|null|24|0|0|null|LOCAL|GRUPAL
-        assertThrows(Throwable.class, ()-> new Torneo(null, null, null, null, (byte)24, (byte)0, 0,TipoTorneo.LOCAL, CaracterTorneo.GRUPAL, null));
+        assertThrows(Throwable.class, ()-> new Torneo(null, null, null, null, (byte)24, (byte)0, 0,null, null, null));
         
         
         LOG.info("Fin de prueba datos nulos...");
@@ -126,5 +126,13 @@ public class TorneoTest {
         assertThrows(Throwable.class, ()-> new Torneo("Copa Mundo", LocalDate.of(2023, 10, 1), LocalDate.of(2023, 8, 15), LocalDate.of(2023, 8, 1), (byte)24, (byte)0, 0,TipoTorneo.LOCAL,CaracterTorneo.GRUPAL, null));
         
         LOG.info("Fin de prueba Cierre inscripción anterior al inicio...");
+    }
+    @Test
+    public void torneoGeneroNulo(){
+         
+    assertThrows(Throwable.class, ()-> new Torneo("Copa Mundo", LocalDate.now().plusMonths(1), LocalDate.now().minusDays(15), LocalDate.now().plusDays(15), (byte)24, (byte)18, 0,TipoTorneo.LOCAL, CaracterTorneo.GRUPAL,  null));
+
+        
+
     }
 }

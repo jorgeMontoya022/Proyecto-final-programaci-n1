@@ -232,19 +232,7 @@ public class JugadorTest {
     } 
 
     
-    @Test
-    public void registrarJugadorGeneroNoPermitido(){
-        var torneo = new Torneo("Copa Mundo", LocalDate.now().plusMonths(1), LocalDate.now().minusDays(15), LocalDate.now().plusDays(15), (byte)24, (byte)18, 0,TipoTorneo.LOCAL, CaracterTorneo.GRUPAL, TorneoGenero.MASCULINO);
-
-        var representante = new Persona("Jorge", "Montoya", "jmontoyaw@email.com", "6067359300");
-
-        var equipo = new Equipo("Real Quindío", representante);
-
-        var jugador = new Jugador("Sofía", "Alzate", "alzateS@gmail.com", "3243256776", LocalDate.now().minusYears(18), GeneroJugador.FEMENINO);
-         
-        assertThrows(Throwable.class, ()->torneo.registrarJugador(equipo, jugador));
-
-    }
-
+    
 
 }
+

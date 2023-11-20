@@ -90,5 +90,5 @@ public class Enfrentamiento {
     public void setEstado(EstadoEnfrentamientos estado) {
         this.estado = estado;
     }
-
+    
 }

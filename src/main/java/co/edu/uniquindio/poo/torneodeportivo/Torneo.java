@@ -34,10 +34,10 @@ public class Torneo {
     public Torneo(String nombre, LocalDate fechaInicio,
             LocalDate fechaInicioInscripciones,
             LocalDate fechaCierreInscripciones, byte numeroParticipantes,
-            byte limiteEdad, int valorInscripcion, TipoTorneo tipoTorneo, CaracterTorneo caracter,
-            TorneoGenero torneoGenero) {
+            byte limiteEdad, int valorInscripcion, TipoTorneo tipoTorneo, CaracterTorneo caracter, TorneoGenero torneoGenero) {
 
         ASSERTION.assertion(nombre != null, "El nombre es requerido");
+        ASSERTION.assertion(torneoGenero !=null, "el genero del torneo es necesario");
 
         ASSERTION.assertion(numeroParticipantes >= 0, "El número de participantes no puede ser negativo");
         ASSERTION.assertion(limiteEdad >= 0, "El limite de edad no puede ser negativo");
@@ -207,7 +207,7 @@ public class Torneo {
      * @param jugador Jugador que se desea registrar.
      */
     public void registrarJugador(String nombre, Jugador jugador) {
-
+        
         var participante = buscarParticipantePorNombre(nombre);
 
         participante.ifPresent((e) -> {
@@ -271,17 +271,13 @@ public class Torneo {
         ASSERTION.assertion(limiteEdad == 0 || limiteEdad >= edadAlInicioTorneo,
                 "No se pueden registrar jugadores que excedan el limite de edad del torneo");
     }
-
+    
     public Collection<Enfrentamiento> listaEnfrentamientos(String nombre) {
         Collection<Enfrentamiento> ListaEnfrentamientoEquipo = new LinkedList<>();
         if (enfrentamientos != null) {
             for (Enfrentamiento enfrentamiento : enfrentamientos) {
-                String equipoVisitante = (enfrentamiento.getEquipoVisitante() != null)
-                        ? enfrentamiento.getEquipoVisitante().toString()
-                        : "";
-                String equipoLocal = (enfrentamiento.getEquipoLocal() != null)
-                        ? enfrentamiento.getEquipoLocal().toString()
-                        : "";
+                String equipoVisitante = (enfrentamiento.getEquipoVisitante() != null) ? enfrentamiento.getEquipoVisitante().toString() : "";
+                String equipoLocal = (enfrentamiento.getEquipoLocal() != null) ? enfrentamiento.getEquipoLocal().toString() : "";
                 if (equipoVisitante.equalsIgnoreCase(nombre) || equipoLocal.equalsIgnoreCase(nombre)) {
                     ListaEnfrentamientoEquipo.add(enfrentamiento);
                 }
@@ -289,5 +285,6 @@ public class Torneo {
         }
         return ListaEnfrentamientoEquipo;
     }
-
+    
+  
 }
