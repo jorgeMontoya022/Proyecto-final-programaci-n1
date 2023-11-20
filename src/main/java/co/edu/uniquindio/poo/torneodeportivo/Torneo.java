@@ -273,16 +273,26 @@ public class Torneo {
     }
     
     public Collection<Enfrentamiento> listaEnfrentamientos(String nombre) {
+        // Se crea una nueva colección para almacenar los enfrentamientos relacionados con el equipo dado.
         Collection<Enfrentamiento> ListaEnfrentamientoEquipo = new LinkedList<>();
+    
+        // Verificar si la lista de enfrentamientos no es nula.
         if (enfrentamientos != null) {
+            // Iterar a través de cada enfrentamiento en la lista de enfrentamientos.
             for (Enfrentamiento enfrentamiento : enfrentamientos) {
+                // Obtener los nombres de los equipos local y visitante como cadenas.
                 String equipoVisitante = (enfrentamiento.getEquipoVisitante() != null) ? enfrentamiento.getEquipoVisitante().toString() : "";
                 String equipoLocal = (enfrentamiento.getEquipoLocal() != null) ? enfrentamiento.getEquipoLocal().toString() : "";
+    
+                // Verificar si el nombre del equipo coincide con el equipo local o visitante del enfrentamiento actual.
                 if (equipoVisitante.equalsIgnoreCase(nombre) || equipoLocal.equalsIgnoreCase(nombre)) {
+                    // Agregar el enfrentamiento actual a la lista de enfrentamientos relacionados con el equipo.
                     ListaEnfrentamientoEquipo.add(enfrentamiento);
                 }
             }
         }
+    
+        // Devolver la colección de enfrentamientos relacionados con el equipo dado.
         return ListaEnfrentamientoEquipo;
     }
     
