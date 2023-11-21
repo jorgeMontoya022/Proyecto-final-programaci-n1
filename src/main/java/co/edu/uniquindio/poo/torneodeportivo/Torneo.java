@@ -8,12 +8,17 @@
 package co.edu.uniquindio.poo.torneodeportivo;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.function.Predicate;
+import java.util.stream.Collectors;
+
 import static co.edu.uniquindio.poo.util.AssertionUtil.ASSERTION;
 
 public class Torneo {
@@ -297,9 +302,31 @@ public class Torneo {
         // Devolver la colección de enfrentamientos relacionados con el equipo dado.
         return ListaEnfrentamientoEquipo;
     }
-
-
     
     
+    // Método que devuelve una colección de enfrentamientos que tienen un juez con el número de licencia proporcionado
+public Collection<Enfrentamiento> juecesEnfrentamientos(String licencia) {
+    // Se crea una nueva colección para almacenar los enfrentamientos que cumplen con la condición
+    Collection<Enfrentamiento> listaEnfrentamientosJuez = new LinkedList<>();
+
+    // Se verifica si la lista de enfrentamientos no es nula antes de comenzar el procesamiento
+    if (enfrentamientos != null) {
+        // Iteración sobre cada objeto Enfrentamiento en la lista enfrentamientos
+        for (Enfrentamiento enfrentamiento : enfrentamientos) {
+            // Se obtiene el número de licencia del juez asociado al enfrentamiento. Si el juez es nulo, se asigna una cadena vacía.
+            String juez = (enfrentamiento.getJuez() != null) ? enfrentamiento.getJuez().toString() : "";
+
+            // Se compara el número de licencia del juez con el número de licencia proporcionado como parámetro
+            // Si son iguales, se agrega el enfrentamiento a la lista listaEnfrentamientosJuez
+            if (juez.equals(licencia)) {
+                listaEnfrentamientosJuez.add(enfrentamiento);
+            }
+        }
+    }
+
+    // Se devuelve la lista de enfrentamientos que tienen un juez con el número de licencia especificado
+    return listaEnfrentamientosJuez;
+}
+
   
 }

@@ -14,19 +14,18 @@ public class Enfrentamiento {
     private LocalDate fechaHora;
     private Equipo equipoLocal;
     private Equipo equipoVisitante;
-    private Collection<Juez> jueces;
+    private Juez juez;
     private Resultado resultado;
     private EstadoEnfrentamientos estado;
 
     public Enfrentamiento(String direccion, String lugar, LocalDate fechaHora, Equipo equipoLocal,
-            Equipo equipoVisitante, EstadoEnfrentamientos estado) {
+            Equipo equipoVisitante, Juez juez, EstadoEnfrentamientos estado) {
 
         ASSERTION.assertion(direccion != null, "La dirección es requerida");
         ASSERTION.assertion(equipoLocal != null, "El equipo local es requerido");
         ASSERTION.assertion(equipoVisitante != null, "El equipo visitante es requerido");
         ASSERTION.assertion(lugar != null, "El nombre del lugar es requerido");
         ASSERTION.assertion(fechaHora != null, "La fecha y hora son requeridas");
-        ASSERTION.assertion(jueces != null, "El nombre es requerido");
         ASSERTION.assertion(resultado != null, "El puntaje no puede ser negativo");
 
         this.direccion = direccion;
@@ -34,7 +33,7 @@ public class Enfrentamiento {
         this.fechaHora = fechaHora;
         this.equipoLocal = equipoLocal;
         this.equipoVisitante = equipoVisitante;
-        this.jueces = new ArrayList<>();
+        this.juez = juez;
         this.estado = estado;
 
     }
@@ -62,18 +61,14 @@ public class Enfrentamiento {
     public Equipo getEquipoVisitante() {
         return equipoVisitante;
     }
+    public Juez getJuez(){
+        return juez;
+    }
 
     public void setFechaHora(LocalDate fechaHora) {
         this.fechaHora = fechaHora;
     }
 
-    public Collection<Juez> getJueces() {
-        return Collections.unmodifiableCollection(jueces);
-    }
-
-    public void setJueces(Collection<Juez> jueces) {
-        this.jueces = jueces;
-    }
 
     public Resultado getResultado() {
         return resultado;
@@ -89,6 +84,10 @@ public class Enfrentamiento {
 
     public void setEstado(EstadoEnfrentamientos estado) {
         this.estado = estado;
+    }
+
+    public Collection<Participante> getJuecesParticipantes() {
+        return null;
     }
     
 }
