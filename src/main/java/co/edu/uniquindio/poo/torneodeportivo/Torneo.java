@@ -103,7 +103,7 @@ public class Torneo {
         return Collections.unmodifiableCollection(jueces);
     }
 
-    public Collection<Enfrentamiento> gEnfrentamientos() {
+    public Collection<Enfrentamiento> getEnfrentamientos() {
         return Collections.unmodifiableCollection(enfrentamientos);
     }
 

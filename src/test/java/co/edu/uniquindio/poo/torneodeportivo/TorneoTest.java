@@ -130,6 +130,7 @@ public class TorneoTest {
     }
     @Test
     public void torneoGeneroNulo(){
+        
         LOG.info("Inicio de prueba torneoGeneroNulo");
         assertThrows(Throwable.class, ()-> new Torneo("Copa Mundo", LocalDate.now().plusMonths(1), LocalDate.now().minusDays(15), LocalDate.now().plusDays(15), (byte)24, (byte)18, 0,TipoTorneo.LOCAL, CaracterTorneo.GRUPAL,  null));
   
