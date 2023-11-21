@@ -272,7 +272,7 @@ public class Torneo {
                 "No se pueden registrar jugadores que excedan el limite de edad del torneo");
     }
 
-    // El método se llama listaEnfrentamientos y recibe un parámetro nombre, que parece representar el nombre de un equipo. El objetivo del método es filtrar y devolver una colección de enfrentamientos en los cuales el equipo especificado (nombre) esté involucrado, ya sea como equipo local o visitante.
+    // El método se llama listaEnfrentamientos y recibe un parámetro nombre, que representa el nombre de un equipo. El objetivo del método es filtrar y devolver una colección de enfrentamientos en los cuales el equipo especificado (nombre) esté involucrado, ya sea como equipo local o visitante.
     
     public Collection<Enfrentamiento> listaEnfrentamientos(String nombre) {
         // Se crea una nueva colección para almacenar los enfrentamientos relacionados con el equipo dado.
