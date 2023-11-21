@@ -1,8 +1,6 @@
 package co.edu.uniquindio.poo.torneodeportivo;
 
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Collections;
 
 import static co.edu.uniquindio.poo.util.AssertionUtil.ASSERTION;
 

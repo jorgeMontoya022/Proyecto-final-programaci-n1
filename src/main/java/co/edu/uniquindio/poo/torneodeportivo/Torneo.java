@@ -8,17 +8,12 @@
 package co.edu.uniquindio.poo.torneodeportivo;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.LinkedList;
-import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.function.Predicate;
-import java.util.stream.Collectors;
-
 import static co.edu.uniquindio.poo.util.AssertionUtil.ASSERTION;
 
 public class Torneo {
@@ -303,8 +298,7 @@ public class Torneo {
         return ListaEnfrentamientoEquipo;
     }
     
-    
-    // Método que devuelve una colección de enfrentamientos que tienen un juez con el número de licencia proporcionado
+        // Método que devuelve una colección de enfrentamientos que tienen un juez con el número de licencia proporcionado
 public Collection<Enfrentamiento> juecesEnfrentamientos(String licencia) {
     // Se crea una nueva colección para almacenar los enfrentamientos que cumplen con la condición
     Collection<Enfrentamiento> listaEnfrentamientosJuez = new LinkedList<>();
@@ -327,6 +321,7 @@ public Collection<Enfrentamiento> juecesEnfrentamientos(String licencia) {
     // Se devuelve la lista de enfrentamientos que tienen un juez con el número de licencia especificado
     return listaEnfrentamientosJuez;
 }
+
 
   
 }

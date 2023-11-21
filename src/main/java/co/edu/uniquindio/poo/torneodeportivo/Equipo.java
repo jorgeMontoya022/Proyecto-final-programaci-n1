@@ -16,10 +16,6 @@ import static co.edu.uniquindio.poo.util.AssertionUtil.ASSERTION;
 
 public record Equipo(String nombre, Persona representante, Collection<Jugador> jugadores ) implements Participante {
     
-
-    
-
-
     public Equipo {
         ASSERTION.assertion(nombre != null && !nombre.isBlank(), "El nombre es requerido");
         ASSERTION.assertion(representante != null, "El representante es requerido");
@@ -81,5 +77,13 @@ public record Equipo(String nombre, Persona representante, Collection<Jugador> j
     public String getNombreCompleto() {
         return nombre;
     }
+
+    @Override
+    public Object getLicencia() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getLicencia'");
+    }
+
+
    
 }   

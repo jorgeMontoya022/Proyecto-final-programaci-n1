@@ -41,5 +41,13 @@ public class Jugador extends Persona implements Participante {
     @Override
     public String getNombreCompleto() {
         return getNombre()+ " "+getApellido();
+
+    }
+
+    @Override
+    public Object getLicencia() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getLicencia'");
     }
 }
+
