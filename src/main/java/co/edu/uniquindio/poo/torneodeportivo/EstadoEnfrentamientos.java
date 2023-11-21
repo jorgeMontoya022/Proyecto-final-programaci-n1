@@ -24,6 +24,7 @@ public enum EstadoEnfrentamientos {
                 return true;
             default:
                 return false;
+                
         }
     }
 }

@@ -231,6 +231,24 @@ public class JugadorTest {
         
     } 
 
+    @Test 
+    public void ingresoTorneoInvalido(){
+        
+        Torneo torneo = new Torneo("Copa Mundo", LocalDate.now().plusMonths(1), LocalDate.now().minusDays(15),
+                LocalDate.now().plusDays(15), (byte) 24, (byte) 18, 0, TipoTorneo.LOCAL, CaracterTorneo.GRUPAL,
+                TorneoGenero.MASCULINO);
+
+        var jugador = new Jugador("Juan", "Diaz", "diaz.com.co", "3124544334",  LocalDate.now().minusYears(15) , null);
+
+        assertThrows(Throwable.class,()->torneo.registrarJugador("UniquindioFc", jugador));
+
+
+        
+       
+    }
+
+    
+
     
     
 

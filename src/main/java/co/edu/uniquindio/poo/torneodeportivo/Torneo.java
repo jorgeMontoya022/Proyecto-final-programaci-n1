@@ -207,6 +207,8 @@ public class Torneo {
      * @param jugador Jugador que se desea registrar.
      */
     public void registrarJugador(String nombre, Jugador jugador) {
+
+        
         
         var participante = buscarParticipantePorNombre(nombre);
 
