@@ -10,8 +10,7 @@ package co.edu.uniquindio.poo.torneodeportivo;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-
-
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.time.LocalDate;
 import java.util.logging.Logger;
@@ -142,13 +141,13 @@ public class TorneoTest {
     public void validarTorneoMaculino(){
 
 
-         Torneo torneo = new Torneo("Copa Mundo", LocalDate.of(2023, 10, 1), LocalDate.of(2023, 8, 1), LocalDate.of(2023, 9, 15), (byte)24, (byte)0, 0,TipoTorneo.LOCAL, CaracterTorneo.GRUPAL, TorneoGenero.MASCULINO);
+        Torneo torneo = new Torneo("Copa Mundo", LocalDate.of(2023, 10, 1), LocalDate.of(2023, 8, 1), LocalDate.of(2023, 9, 15), (byte)24, (byte)0, 0,TipoTorneo.LOCAL, CaracterTorneo.GRUPAL, TorneoGenero.MASCULINO);
         
-        Jugador jugadorMasculino = new Jugador("Carlos", "Carvajal", "carlosC@email.com", "3214565657", LocalDate.of(2002, 3, 20), GeneroJugador.MASCULINO);
+        Jugador jugadorMasculino = new Jugador("Carlos", "Carvajal", "carlosC@email.com", "3214565657", LocalDate.of(2002, 3, 20), Genero.MASCULINO);
 
         torneo.registrarJugador("UniFC", jugadorMasculino);
     
-
+        assertTrue(torneo.getParticipantes().contains(jugadorMasculino));
        
     }
 
@@ -158,9 +157,11 @@ public class TorneoTest {
 
          Torneo torneo = new Torneo("Copa Mundo", LocalDate.of(2023, 10, 1), LocalDate.of(2023, 8, 1), LocalDate.of(2023, 9, 15), (byte)24, (byte)0, 0,TipoTorneo.LOCAL, CaracterTorneo.GRUPAL, TorneoGenero.FEMENINO);
         
-        Jugador jugadorFemenino = new Jugador("Laura", "Mosquera", "lauramosquera@email.com", "3214565657", LocalDate.of(2002, 3, 20), GeneroJugador.FEMENINO);
+        Jugador jugadorFemenino = new Jugador("Laura", "Mosquera", "lauramosquera@email.com", "3214565657", LocalDate.of(2002, 3, 20), Genero.FEMENINO);
         
         torneo.registrarJugador("UniFC", jugadorFemenino);
+
+        assertTrue(torneo.getParticipantes().contains(jugadorFemenino));
     
    
     }

@@ -14,15 +14,21 @@ import java.util.function.Predicate;
 
 import static co.edu.uniquindio.poo.util.AssertionUtil.ASSERTION;
 
-public record Equipo(String nombre, Persona representante, Collection<Jugador> jugadores) implements Participante {
+public record Equipo(String nombre, Genero genero,Estadisticas estadisticas, Persona representante, Collection<Jugador> jugadores ) implements Participante {
     
     public Equipo {
         ASSERTION.assertion(nombre != null && !nombre.isBlank(), "El nombre es requerido");
         ASSERTION.assertion(representante != null, "El representante es requerido");
+        ASSERTION.assertion(genero != null, "El genero es necesario");
+        
     }
 
-    public Equipo(String nombre, Persona representante) {
-        this(nombre, representante, new LinkedList<>());
+    public Equipo(String nombre, Genero genero,Estadisticas estadisticas, Persona representante) {
+        this(nombre, genero,estadisticas, representante, new LinkedList<>());
+    }
+    // validar que el genero del jugador sea igual al del equipo
+    private void validarGeneroJugador(Jugador jugador){
+        ASSERTION.assertion(jugador.getGeneroJugador() == genero , "El genero del jugador debe ser igual al del equipo");
     }
 
     /**
@@ -33,6 +39,7 @@ public record Equipo(String nombre, Persona representante, Collection<Jugador> j
      */
     public void registrarJugador(Jugador jugador) {
         validarJugadorExiste(jugador);
+        validarGeneroJugador(jugador);
         jugadores.add(jugador);
     }
 
@@ -49,6 +56,10 @@ public record Equipo(String nombre, Persona representante, Collection<Jugador> j
         Predicate<Jugador> nombreIgual = jugador1 -> jugador1.getNombre().equals(jugador.getNombre());
         Predicate<Jugador> apellidoIgual = j -> j.getApellido().equals(jugador.getApellido());
         return jugadores.stream().filter(nombreIgual.and(apellidoIgual)).findAny();
+
+        //Predicate<Jugador> nombreCompletoIgual = j -> j.getNombre().equals(jugador.getNombre()) && j.getApellido().equals(jugador.getApellido());
+
+        //return jugadores.stream().filter(nombreCompletoIgual).findAny();
     }
 
     /**
@@ -71,17 +82,12 @@ public record Equipo(String nombre, Persona representante, Collection<Jugador> j
         throw new UnsupportedOperationException("Unimplemented method 'getLicencia'");
     }
 
-    public String getNnombre() {
-        return null;
-    }
-
-    public Optional<Participante> stream() {
-        return null;
-    }
-
     @Override
     public Object getEstadisticas() {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'getEstadisticas'");
     }
-}
+
+
+   
+}   

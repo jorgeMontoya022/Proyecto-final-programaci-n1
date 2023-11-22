@@ -34,8 +34,7 @@ public class Torneo {
     private final TorneoGenero torneoGenero;
     private final Collection<Juez> jueces;
     private final Collection<Enfrentamiento> enfrentamientos;
-
-    private Equipo equipos;
+    private final Collection <Equipo> equipos = new LinkedList<>();
 
     public Torneo(String nombre, LocalDate fechaInicio,
             LocalDate fechaInicioInscripciones,
@@ -107,6 +106,10 @@ public class Torneo {
 
     public Collection<Juez> getJueces() {
         return Collections.unmodifiableCollection(jueces);
+    }
+
+    public Collection<Equipo> getEquipos(){
+        return Collections.unmodifiableCollection(equipos);
     }
 
     public Collection<Enfrentamiento> getEnfrentamientos() {
@@ -331,29 +334,30 @@ public Collection<Enfrentamiento> juecesEnfrentamientos(String licencia) {
 
 
 
+ 
 
-// Método para obtener estadísticas de los equiposs
-    /**
-     * 
-     */
+
     public List<Estadisticas> obtenerEstadisticasEquiposOrdenadas() {
+        // Utiliza streams para procesar la lista de equipos y obtener las estadísticas.
+        // Luego, ordena las estadísticas según ciertos criterios y devuelve una lista ordenada.
         return equipos.stream()
-                .map(equipo -> equipo.getEstadisticas())
+                .map(equipo -> equipo.estadisticas())  // Mapea cada equipo a sus estadísticas.
                 .sorted(Comparator
-                        .comparingInt(Estadisticas::getVictorias)
-                        .thenComparingInt(Estadisticas::getEmpates)
-                        .thenComparingInt(Estadisticas::getPerdidos)
-                        .reversed())
-                .collect(Collectors.toList());
-            
+                        .comparingInt(Estadisticas::getVictorias)  // Ordena por victorias.
+                        .thenComparingInt(Estadisticas::getEmpates)  // En caso de empate, ordena por empates.
+                        .thenComparingInt(Estadisticas::getPerdidos)  // En caso de empate en empates, ordena por derrotas.
+                        .reversed())  // Invierte el orden para obtener orden descendente.
+                .collect(Collectors.toList());  // Recolecta las estadísticas ordenadas en una lista.
     }
+}
 
      
 
 
 
 
-}
+
+
 
 
 
