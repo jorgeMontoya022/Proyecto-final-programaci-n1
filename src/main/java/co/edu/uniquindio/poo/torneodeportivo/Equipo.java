@@ -14,21 +14,21 @@ import java.util.function.Predicate;
 
 import static co.edu.uniquindio.poo.util.AssertionUtil.ASSERTION;
 
-public record Equipo(String nombre, GeneroJugador generoJugador, Persona representante, Collection<Jugador> jugadores ) implements Participante {
+public record Equipo(String nombre, GeneroJugador genero, Persona representante, Collection<Jugador> jugadores ) implements Participante {
     
     public Equipo {
         ASSERTION.assertion(nombre != null && !nombre.isBlank(), "El nombre es requerido");
         ASSERTION.assertion(representante != null, "El representante es requerido");
-        ASSERTION.assertion(generoJugador != null, "El genero es necesario");
+        ASSERTION.assertion(genero != null, "El genero es necesario");
         
     }
 
     public Equipo(String nombre, GeneroJugador generoJugador, Persona representante) {
         this(nombre, generoJugador, representante, new LinkedList<>());
     }
-
+    // validar que el genero del jugador sea igual al del equipo
     private void validarGeneroJugador(Jugador jugador){
-        ASSERTION.assertion(jugador.getGeneroJugador() == generoJugador , "El genero del jugador debe ser igual al del equipo");
+        ASSERTION.assertion(jugador.getGeneroJugador() == genero , "El genero del jugador debe ser igual al del equipo");
     }
 
     /**
@@ -90,23 +90,6 @@ public record Equipo(String nombre, GeneroJugador generoJugador, Persona represe
         throw new UnsupportedOperationException("Unimplemented method 'getLicencia'");
     }
 
-<<<<<<< HEAD
 
    
 }   
-=======
-    public String getNnombr() {
-        return null;
-    }
-
-    public Optional<Participante> stream() {
-        return null;
-    }
-
-    @Override
-    public Object getEstadisticas() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getEstadisticas'");
-    }
-}
->>>>>>> 7e5f907a53f215c6e1146ed18abf5b214f4b6685
