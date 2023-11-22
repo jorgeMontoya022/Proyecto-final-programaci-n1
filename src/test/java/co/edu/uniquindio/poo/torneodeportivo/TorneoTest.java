@@ -145,7 +145,7 @@ public class TorneoTest {
          Torneo torneo = new Torneo("Copa Mundo", LocalDate.of(2023, 10, 1), LocalDate.of(2023, 8, 1), LocalDate.of(2023, 9, 15), (byte)24, (byte)0, 0,TipoTorneo.LOCAL, CaracterTorneo.GRUPAL, TorneoGenero.MASCULINO);
         
         Jugador jugadorMasculino = new Jugador("Carlos", "Carvajal", "carlosC@email.com", "3214565657", LocalDate.of(2002, 3, 20), GeneroJugador.MASCULINO);
-        asserTrue(jugadorMasculino.getGeneroJugador());
+        assertEquals(jugadorMasculino.getGeneroJugador());
 
     }
 
@@ -156,7 +156,17 @@ public class TorneoTest {
          Torneo torneo = new Torneo("Copa Mundo", LocalDate.of(2023, 10, 1), LocalDate.of(2023, 8, 1), LocalDate.of(2023, 9, 15), (byte)24, (byte)0, 0,TipoTorneo.LOCAL, CaracterTorneo.GRUPAL, TorneoGenero.FEMENINO);
         
         Jugador jugadorFemenino = new Jugador("Laura", "Mosquera", "lauramosquera@email.com", "3214565657", LocalDate.of(2002, 3, 20), GeneroJugador.MASCULINO);
-        asserTrue(jugadorFemenino.getGeneroJugador());
+        assertEquals(jugadorFemenino.getGeneroJugador());
+
+    }
+    @Test 
+    public void validarTorneoMixto(){
+
+
+         Torneo torneo = new Torneo("Copa Mundo", LocalDate.of(2023, 10, 1), LocalDate.of(2023, 8, 1), LocalDate.of(2023, 9, 15), (byte)24, (byte)0, 0,TipoTorneo.LOCAL, CaracterTorneo.GRUPAL, TorneoGenero.MIXTO);
+        
+        Jugador jugadores = new Jugador("Carlos", "Carvajal", "carlosC@email.com", "3214565657", LocalDate.of(2002, 3, 20), GeneroJugador.MIXTO);
+        assertEquals(jugadores.getGeneroJugador());
 
     }
     
