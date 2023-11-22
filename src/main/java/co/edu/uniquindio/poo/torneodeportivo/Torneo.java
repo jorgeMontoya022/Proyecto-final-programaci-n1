@@ -325,7 +325,7 @@ public class Torneo {
 
     }
 
-    // Método para obtener estadísticas de los equipos
+    // Método para obtener estadísticas de los equiposs
     public List<Estadisticas> obtenerEstadisticasEquiposOrdenadas() {
         return equipos.stream()
                 .map(equipo -> equipo.getEstadisticas())
