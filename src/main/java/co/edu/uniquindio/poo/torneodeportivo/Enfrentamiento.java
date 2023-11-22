@@ -16,6 +16,7 @@ public class Enfrentamiento {
     private Resultado resultado;
     private EstadoEnfrentamientos estado;
 
+
     public Enfrentamiento(String direccion, String lugar, LocalDate fechaHora, Equipo equipoLocal,
             Equipo equipoVisitante, Juez juez, EstadoEnfrentamientos estado) {
 

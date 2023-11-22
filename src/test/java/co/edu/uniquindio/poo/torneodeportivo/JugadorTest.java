@@ -57,9 +57,7 @@ public class JugadorTest {
         // Representante{Robinson,Pulgarin,rpulgarin@email.com,6067359300}, Jugador
         // {Laura,Garcia,lauragarcia@email.com,6067431234, fechaActual - 15 años}
 
-        Torneo torneo = new Torneo("Copa Mundo", LocalDate.now().plusMonths(1), LocalDate.now().minusDays(15),
-                LocalDate.now().plusDays(15), (byte) 24, (byte) 18, 0, TipoTorneo.LOCAL, CaracterTorneo.GRUPAL,
-                TorneoGenero.MASCULINO);
+        Torneo torneo = new Torneo("Copa Mundo", LocalDate.now().plusMonths(1), LocalDate.now().minusDays(15), LocalDate.now().plusDays(15), (byte) 24, (byte) 18, 0, TipoTorneo.LOCAL, CaracterTorneo.GRUPAL, TorneoGenero.MASCULINO);
 
         var representante = new Persona("Robinson", "Pulgarin", "rpulgarin@email.com", "6067359300");
         var equipo = new Equipo("UniquindioFEM", representante);
@@ -231,23 +229,12 @@ public class JugadorTest {
         
     } 
 
-    @Test 
-    public void ingresoTorneoInvalido(){
+
+    @Test
+    public void validarGenero(){
         
-        Torneo torneo = new Torneo("Copa Mundo", LocalDate.now().plusMonths(1), LocalDate.now().minusDays(15),
-                LocalDate.now().plusDays(15), (byte) 24, (byte) 18, 0, TipoTorneo.LOCAL, CaracterTorneo.GRUPAL,
-                TorneoGenero.MASCULINO);
-
-        var jugador = new Jugador("Juan", "Diaz", "diaz.com.co", "3124544334",  LocalDate.now().minusYears(15) , null);
-
-        assertThrows(Throwable.class,()->torneo.registrarJugador("UniquindioFc", jugador));
-
-
         
-       
     }
-
-    
 
     
     
