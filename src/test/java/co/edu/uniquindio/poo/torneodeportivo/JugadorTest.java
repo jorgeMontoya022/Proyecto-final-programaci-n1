@@ -244,5 +244,26 @@ public class JugadorTest {
        
     }
 
+    @Test
+    public void registrarJugadoresGenerosDistintos() {
+        LOG.info("Inicio de prueba registrarJugadoresRepetidosTorneo...");
+       
+         var torneo = new Torneo("Copa Mundo", LocalDate.now().plusMonths(1), LocalDate.now().minusDays(15), LocalDate.now().plusDays(15), (byte)24, (byte)18, 0,TipoTorneo.LOCAL, CaracterTorneo.GRUPAL, TorneoGenero.FEMENINO);
+
+        var representante = new Persona("Robinson", "Pulgarin", "rpulgarin@email.com", "6067359300");
+        var equipo = new Equipo("UniquindioFEM", Genero.FEMENINO, representante);
+        var equipo2 = new Equipo("QuindíoFEM", Genero.FEMENINO, representante);
+        torneo.registrarParticipante(equipo);
+        torneo.registrarParticipante(equipo2);
+
+        var jugador = new Jugador("Laura", "Garcia", "lauragarcia@email.com", "6067431234",LocalDate.now().minusYears(15), Genero.FEMENINO);
+        var jugador2 = new Jugador("Daniel", "Muñoz", "DanielM@email.com", "3227069941",LocalDate.now().minusYears(15),Genero.MASCULINO);
+                
+        equipo.registrarJugador(jugador);
+        equipo.registrarJugador(jugador2);
+        
+        assertTrue(!equipo.jugadores().contains(jugador2));
+    }
+
 }
 
