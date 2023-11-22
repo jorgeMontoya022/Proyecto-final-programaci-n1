@@ -14,15 +14,21 @@ import java.util.function.Predicate;
 
 import static co.edu.uniquindio.poo.util.AssertionUtil.ASSERTION;
 
-public record Equipo(String nombre, Persona representante, Collection<Jugador> jugadores) implements Participante {
+public record Equipo(String nombre, GeneroJugador generoJugador, Persona representante, Collection<Jugador> jugadores ) implements Participante {
     
     public Equipo {
         ASSERTION.assertion(nombre != null && !nombre.isBlank(), "El nombre es requerido");
         ASSERTION.assertion(representante != null, "El representante es requerido");
+        ASSERTION.assertion(generoJugador != null, "El genero es necesario");
+        
     }
 
-    public Equipo(String nombre, Persona representante) {
-        this(nombre, representante, new LinkedList<>());
+    public Equipo(String nombre, GeneroJugador generoJugador, Persona representante) {
+        this(nombre, generoJugador, representante, new LinkedList<>());
+    }
+
+    private void validarGeneroJugador(Jugador jugador){
+        ASSERTION.assertion(jugador.getGeneroJugador() == generoJugador , "El genero del jugador debe ser igual al del equipo");
     }
 
     /**
@@ -33,11 +39,12 @@ public record Equipo(String nombre, Persona representante, Collection<Jugador> j
      */
     public void registrarJugador(Jugador jugador) {
         validarJugadorExiste(jugador);
+        validarGeneroJugador(jugador);
         jugadores.add(jugador);
     }
 
     /**
-     * Permimte buscar un jugador en el equipo basado en su nombre y apellido.
+     * Permimte buscar un jugador en el equipo basado en su nombre y apellido.ss
      * 
      * @param jugador Jugador que se desea buscar
      * @return Optional con el jugador que coincida con el nombre y apellido del
@@ -49,7 +56,19 @@ public record Equipo(String nombre, Persona representante, Collection<Jugador> j
         Predicate<Jugador> nombreIgual = jugador1 -> jugador1.getNombre().equals(jugador.getNombre());
         Predicate<Jugador> apellidoIgual = j -> j.getApellido().equals(jugador.getApellido());
         return jugadores.stream().filter(nombreIgual.and(apellidoIgual)).findAny();
+
+        //Predicate<Jugador> nombreCompletoIgual = j -> j.getNombre().equals(jugador.getNombre()) && j.getApellido().equals(jugador.getApellido());
+
+        //return jugadores.stream().filter(nombreCompletoIgual).findAny();
     }
+
+    /*
+
+    public boolean esIgual ( Jugador jugador1, Jugador jugador ) {
+        return jugador1.getNombre().equals(jugador.getNombre()) && j.getApellido().equals(jugador.getApellido());
+    }
+
+     */
 
     /**
      * Valida que no exista ya un jugador registrado con el mismo nombre y apellido,
@@ -71,7 +90,7 @@ public record Equipo(String nombre, Persona representante, Collection<Jugador> j
         throw new UnsupportedOperationException("Unimplemented method 'getLicencia'");
     }
 
-    public String getNombre() {
+    public String getNnombr() {
         return null;
     }
 
@@ -85,3 +104,4 @@ public record Equipo(String nombre, Persona representante, Collection<Jugador> j
         throw new UnsupportedOperationException("Unimplemented method 'getEstadisticas'");
     }
 }
+>>>>>>> 7e5f907a53f215c6e1146ed18abf5b214f4b6685
