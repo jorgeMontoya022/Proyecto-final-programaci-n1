@@ -100,7 +100,7 @@ public class ParticipanteTest {
 
         var torneo = new Torneo("Copa Mundo", LocalDate.now().plusMonths(1), LocalDate.now().minusDays(15), LocalDate.now().plusDays(15), (byte)24, (byte)18, 0,TipoTorneo.LOCAL, CaracterTorneo.INDIVIDUAL, TorneoGenero.FEMENINO);
         var representante = new Persona("Robinson", "Pulgarin", "rpulgarin@email.com", "6067359300");
-        var equipo = new Equipo("UniquindioFEM", Genero.FEMENINO, representante);
+        var equipo = new Equipo("UniquindioFEM", Genero.MASCULINO, representante);
                 
         
         assertThrows(Throwable.class,()->torneo.registrarParticipante(equipo));
