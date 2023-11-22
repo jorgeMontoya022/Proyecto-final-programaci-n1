@@ -7,5 +7,8 @@ public interface Participante {
     Object getLicencia();
 
 
+    Object getEstadisticas();
+
+
     
 }

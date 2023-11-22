@@ -90,6 +90,23 @@ public record Equipo(String nombre, GeneroJugador generoJugador, Persona represe
         throw new UnsupportedOperationException("Unimplemented method 'getLicencia'");
     }
 
+<<<<<<< HEAD
 
    
 }   
+=======
+    public String getNnombr() {
+        return null;
+    }
+
+    public Optional<Participante> stream() {
+        return null;
+    }
+
+    @Override
+    public Object getEstadisticas() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getEstadisticas'");
+    }
+}
+>>>>>>> 7e5f907a53f215c6e1146ed18abf5b214f4b6685
