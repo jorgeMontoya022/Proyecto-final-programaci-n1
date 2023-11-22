@@ -71,7 +71,7 @@ public record Equipo(String nombre, Persona representante, Collection<Jugador> j
         throw new UnsupportedOperationException("Unimplemented method 'getLicencia'");
     }
 
-    public String getNnombr() {
+    public String getNombre() {
         return null;
     }
 }
