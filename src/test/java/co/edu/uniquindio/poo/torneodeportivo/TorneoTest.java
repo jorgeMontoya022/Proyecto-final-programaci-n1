@@ -145,7 +145,8 @@ public class TorneoTest {
          Torneo torneo = new Torneo("Copa Mundo", LocalDate.of(2023, 10, 1), LocalDate.of(2023, 8, 1), LocalDate.of(2023, 9, 15), (byte)24, (byte)0, 0,TipoTorneo.LOCAL, CaracterTorneo.GRUPAL, TorneoGenero.MASCULINO);
         
         Jugador jugadorMasculino = new Jugador("Carlos", "Carvajal", "carlosC@email.com", "3214565657", LocalDate.of(2002, 3, 20), GeneroJugador.MASCULINO);
-        asserTrue(jugadorMasculino.getGeneroJugador());
+        assertTrue(torneo.jugadores().contains(jugadorMasculino));
+        assertEquals(1, torneo.jugadores().size());
 
     }
 
