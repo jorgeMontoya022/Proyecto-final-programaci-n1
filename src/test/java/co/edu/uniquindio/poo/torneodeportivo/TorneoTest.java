@@ -96,7 +96,7 @@ public class TorneoTest {
     public void inscripcionNegativa() {
         LOG.info("Inicio de prueba inscripción negativa...");
         // Almacenar los datos de prueba Copa Mundo|2023-10-01|2023-08-01|2023-09-15|24|0|-1|LOCAL|GRUPAL
-        assertThrows(Throwable.class, ()-> new Torneo("Copa Mundo", LocalDate.of(2023, 10, 1), LocalDate.of(2023, 8, 01), LocalDate.of(2023, 10, 15), (byte)24, (byte)0, -1,TipoTorneo.LOCAL,CaracterTorneo.GRUPAL, TorneoGenero.MASCULINO));
+        assertThrows(Throwable.class, ()-> new Torneo("Copa Mundo", LocalDate.of(2023, 10, 1), LocalDate.of(2023, 8, 01), LocalDate.of(2023, 10, 15), (byte)24, (byte)0, -1,TipoTorneo.LOCAL,CaracterTorneo.GRUPAL, null));
         
         LOG.info("Fin de prueba inscripción negativa...");
     }
@@ -132,11 +132,34 @@ public class TorneoTest {
     public void torneoGeneroNulo(){
         
         LOG.info("Inicio de prueba torneoGeneroNulo");
-
         assertThrows(Throwable.class, ()-> new Torneo("Copa Mundo", LocalDate.now().plusMonths(1), LocalDate.now().minusDays(15), LocalDate.now().plusDays(15), (byte)24, (byte)18, 0,TipoTorneo.LOCAL, CaracterTorneo.GRUPAL,  null));
   
         
         LOG.info("fin de prueba torneoGeneroNulo");
     }
 
-}
+    @Test 
+    public void validarTorneoMaculino(){
+
+
+         Torneo torneo = new Torneo("Copa Mundo", LocalDate.of(2023, 10, 1), LocalDate.of(2023, 8, 1), LocalDate.of(2023, 9, 15), (byte)24, (byte)0, 0,TipoTorneo.LOCAL, CaracterTorneo.GRUPAL, TorneoGenero.MASCULINO);
+        
+        Jugador jugadorMasculino = new Jugador("Carlos", "Carvajal", "carlosC@email.com", "3214565657", LocalDate.of(2002, 3, 20), GeneroJugador.MASCULINO);
+        asserTrue(jugadorMasculino.getGeneroJugador());
+
+    }
+
+    @Test 
+    public void validarTorneoFemenino(){
+
+
+         Torneo torneo = new Torneo("Copa Mundo", LocalDate.of(2023, 10, 1), LocalDate.of(2023, 8, 1), LocalDate.of(2023, 9, 15), (byte)24, (byte)0, 0,TipoTorneo.LOCAL, CaracterTorneo.GRUPAL, TorneoGenero.FEMENINO);
+        
+        Jugador jugadorFemenino = new Jugador("Laura", "Mosquera", "lauramosquera@email.com", "3214565657", LocalDate.of(2002, 3, 20), GeneroJugador.MASCULINO);
+        asserTrue(jugadorFemenino.getGeneroJugador());
+
+    }
+    
+   
+} 
+
