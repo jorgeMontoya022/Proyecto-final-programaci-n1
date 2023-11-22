@@ -8,13 +8,9 @@
 package co.edu.uniquindio.poo.torneodeportivo;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.function.Predicate;
@@ -368,9 +364,7 @@ public Collection<Enfrentamiento> juecesEnfrentamientos(String licencia) {
     return equiposCaracteristicas;
 }
 
-public int obtenerCantidadVictorias(String nombreEquipo){
 
-     var participante = buscarParticipantePorNombre(nombre);
 
      
 
@@ -379,7 +373,7 @@ public int obtenerCantidadVictorias(String nombreEquipo){
 
 }
 
-}
+
 
 
 

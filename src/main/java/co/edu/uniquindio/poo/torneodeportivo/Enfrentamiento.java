@@ -18,7 +18,7 @@ public class Enfrentamiento {
 
 
     public Enfrentamiento(String direccion, String lugar, LocalDate fechaHora, Equipo equipoLocal,
-            Equipo equipoVisitante, Juez juez, EstadoEnfrentamientos estado) {
+            Equipo equipoVisitante, Juez juez, EstadoEnfrentamientos estado, Resultado resultado) {
 
         ASSERTION.assertion(direccion != null, "La dirección es requerida");
         ASSERTION.assertion(equipoLocal != null, "El equipo local es requerido");
@@ -34,6 +34,7 @@ public class Enfrentamiento {
         this.equipoVisitante = equipoVisitante;
         this.juez = juez;
         this.estado = estado;
+        this.resultado = resultado;
 
     }
 
