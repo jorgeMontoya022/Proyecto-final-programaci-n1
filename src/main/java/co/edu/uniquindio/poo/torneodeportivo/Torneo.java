@@ -34,6 +34,7 @@ public class Torneo {
     private final TorneoGenero torneoGenero;
     private final Collection<Juez> jueces;
     private final Collection<Enfrentamiento> enfrentamientos;
+    private final Collection <Equipo> equipos = new LinkedList<>();
 
     public Torneo(String nombre, LocalDate fechaInicio,
             LocalDate fechaInicioInscripciones,
@@ -105,6 +106,10 @@ public class Torneo {
 
     public Collection<Juez> getJueces() {
         return Collections.unmodifiableCollection(jueces);
+    }
+
+    public Collection<Equipo> getEquipos(){
+        return Collections.unmodifiableCollection(equipos);
     }
 
     public Collection<Enfrentamiento> getEnfrentamientos() {
@@ -331,13 +336,13 @@ public Collection<Enfrentamiento> juecesEnfrentamientos(String licencia) {
 
     public List<Estadisticas> obtenerEstadisticasEquiposOrdenadas() {
         return equipos.stream()
-                .map(equipo -> equipo.getEstadisticas())
-                .sorted(Comparator
+                .map(equipo -> equipo.estadisticas())
+                .sorted((Comparator
                         .comparingInt(Estadisticas::getVictorias)
                         .thenComparingInt(Estadisticas::getEmpates)
                         .thenComparingInt(Estadisticas::getPerdidos)
-                        .reversed())
-                .collect(Collectors.toList());
+                        .reversed()))
+                        .collect(Collectors.toList());
             
     }
      
