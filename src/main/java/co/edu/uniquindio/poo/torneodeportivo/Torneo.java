@@ -334,23 +334,29 @@ public Collection<Enfrentamiento> juecesEnfrentamientos(String licencia) {
 
 
 
+ 
+
+
     public List<Estadisticas> obtenerEstadisticasEquiposOrdenadas() {
+        // Utiliza streams para procesar la lista de equipos y obtener las estadísticas.
+        // Luego, ordena las estadísticas según ciertos criterios y devuelve una lista ordenada.
         return equipos.stream()
-                .map(equipo -> equipo.estadisticas())
-                .sorted((Comparator
-                        .comparingInt(Estadisticas::getVictorias)
-                        .thenComparingInt(Estadisticas::getEmpates)
-                        .thenComparingInt(Estadisticas::getPerdidos)
-                        .reversed()))
-                        .collect(Collectors.toList());
-            
+                .map(equipo -> equipo.estadisticas())  // Mapea cada equipo a sus estadísticas.
+                .sorted(Comparator
+                        .comparingInt(Estadisticas::getVictorias)  // Ordena por victorias.
+                        .thenComparingInt(Estadisticas::getEmpates)  // En caso de empate, ordena por empates.
+                        .thenComparingInt(Estadisticas::getPerdidos)  // En caso de empate en empates, ordena por derrotas.
+                        .reversed())  // Invierte el orden para obtener orden descendente.
+                .collect(Collectors.toList());  // Recolecta las estadísticas ordenadas en una lista.
     }
+}
+
      
 
 
 
 
-}
+
 
 
 
