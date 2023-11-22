@@ -230,11 +230,9 @@ public class JugadorTest {
     } 
 
 
-    @Test
-    public void validarGenero(){
+   
         
-        
-    }
+    
 
     
     

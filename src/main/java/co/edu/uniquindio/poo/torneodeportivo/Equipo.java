@@ -21,7 +21,7 @@ public record Equipo(String nombre, Persona representante, Collection<Jugador> j
         ASSERTION.assertion(representante != null, "El representante es requerido");
     }
 
-    public Equipo(String nombre, Persona representante, int numeroVictorias, int numeroEmpates, int numeroDerrotas) {
+    public Equipo(String nombre, Persona representante) {
         this(nombre, representante, new LinkedList<>());
     }
 
