@@ -329,44 +329,6 @@ public Collection<Enfrentamiento> juecesEnfrentamientos(String licencia) {
 
 
 
-   public Collection<String> calcularEstadisticas() {
-    LinkedList<String> equiposCaracteristicas = new LinkedList<>();
-
-    for (Enfrentamiento enfrentamiento : enfrentamientos) {
-        if (enfrentamiento.getEstado() == EstadoEnfrentamientos.FINALIZADO) {
-            String equipoLocal = enfrentamiento.getEquipoLocal().nombre();
-            String equipoVisitante = enfrentamiento.getEquipoVisitante().nombre();
-
-
-            int resultadoLocal = enfrentamiento.getResultado().getPuntosEquipo1();
-            int resultadoVisitante = enfrentamiento.getResultado().getPuntosEquipo2();
-
-
-            if (resultadoLocal > resultadoVisitante){
-                equiposCaracteristicas.add(equipoLocal+"Victoria");
-                equiposCaracteristicas.add(equipoVisitante+"Derrota");
-            }
-            else if (resultadoVisitante>resultadoLocal) {
-                equiposCaracteristicas.add(equipoVisitante+"Victoria");
-                equiposCaracteristicas.add(equipoLocal+"Derrota");
-                
-            }
-
-            else {
-                equiposCaracteristicas.add(equipoLocal+"Empate");
-                equiposCaracteristicas.add(equipoVisitante+"Empate");
-
-            }
-
-           
-        }
-    }
-
-
-
-    return equiposCaracteristicas;
-}
-
 
 // Método para obtener estadísticas de los equiposs
     public List<Estadisticas> obtenerEstadisticasEquiposOrdenadas() {
