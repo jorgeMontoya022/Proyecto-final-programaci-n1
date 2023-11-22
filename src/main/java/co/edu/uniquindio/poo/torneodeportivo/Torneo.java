@@ -11,10 +11,10 @@ import java.time.LocalDate;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.function.Predicate;
-
 import static co.edu.uniquindio.poo.util.AssertionUtil.ASSERTION;
 
 public class Torneo {
@@ -294,14 +294,11 @@ public class Torneo {
                 }
             }
         }
-    
-        // Devolver la colección de enfrentamientos relacionados con el equipo dado.
         return ListaEnfrentamientoEquipo;
     }
-    
-    
-// Método que devuelve una colección de enfrentamientos que tienen un juez con el número de licencia proporcionado
-public Collection<Enfrentamiento> juecesEnfrentamientos(String licencia) {
+
+    // Método que devuelve una colección de enfrentamientos que tienen un juez con el número de licencia proporcionado
+    public Collection<Enfrentamiento> juecesEnfrentamientos(String licencia) {
     // Se crea una nueva colección para almacenar los enfrentamientos que cumplen con la condición
     Collection<Enfrentamiento> listaEnfrentamientosJuez = new LinkedList<>();
 
@@ -322,74 +319,23 @@ public Collection<Enfrentamiento> juecesEnfrentamientos(String licencia) {
 
     // Se devuelve la lista de enfrentamientos que tienen un juez con el número de licencia especificado
     return listaEnfrentamientosJuez;
-   }
 
-
-
-   public Collection<String> calcularEstadisticas() {
-    LinkedList<String> equiposCaracteristicas = new LinkedList<>();
-
-    for (Enfrentamiento enfrentamiento : enfrentamientos) {
-        if (enfrentamiento.getEstado() == EstadoEnfrentamientos.FINALIZADO) {
-            String equipoLocal = enfrentamiento.getEquipoLocal().nombre();
-            String equipoVisitante = enfrentamiento.getEquipoVisitante().nombre();
-
-
-            int resultadoLocal = enfrentamiento.getResultado().getPuntosEquipo1();
-            int resultadoVisitante = enfrentamiento.getResultado().getPuntosEquipo2();
-
-
-            if (resultadoLocal > resultadoVisitante){
-                equiposCaracteristicas.add(equipoLocal+"Victoria");
-                equiposCaracteristicas.add(equipoVisitante+"Derrota");
-            }
-            else if (resultadoVisitante>resultadoLocal) {
-                equiposCaracteristicas.add(equipoVisitante+"Victoria");
-                equiposCaracteristicas.add(equipoLocal+"Derrota");
-                
-            }
-
-            else {
-                equiposCaracteristicas.add(equipoLocal+"Empate");
-                equiposCaracteristicas.add(equipoVisitante+"Empate");
-
-            }
-
-           
-        }
     }
 
-
-
-    return equiposCaracteristicas;
-}
-
-
-
-     
-
-
-
-
-}
-
-
-
-
-
-
-   
-
-
-     
-        
+    // Método para obtener estadísticas de los equipos
+    public List<Estadisticas> obtenerEstadisticasEquiposOrdenadas() {
+        return equipos.stream()
+                .map(equipo -> equipo.getEstadisticas())
+                .sorted(Comparator
+                        .comparingInt(Estadisticas::getNumeroVictorias)
+                        .thenComparingInt(Estadisticas::getNumeroEmpates)
+                        .thenComparingInt(Estadisticas::getNumeroPerdidas)
+                        .reversed())
+                .collect(Collectors.toList());
+            
+    }
     
+}
 
-
-
-
-
-
-
-
+    
 
