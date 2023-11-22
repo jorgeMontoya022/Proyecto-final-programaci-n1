@@ -347,6 +347,7 @@ public Collection<Enfrentamiento> juecesEnfrentamientos(String licencia) {
                 .collect(Collectors.toList());
             
     }
+
      
 
 
