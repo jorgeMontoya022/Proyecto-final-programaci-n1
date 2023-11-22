@@ -329,11 +329,6 @@ public Collection<Enfrentamiento> juecesEnfrentamientos(String licencia) {
 
 
 
-   
-
-
-
-
     public List<Estadisticas> obtenerEstadisticasEquiposOrdenadas() {
         return equipos.stream()
                 .map(equipo -> equipo.getEstadisticas())

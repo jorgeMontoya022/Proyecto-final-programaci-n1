@@ -13,9 +13,9 @@ import static co.edu.uniquindio.poo.util.AssertionUtil.ASSERTION;
 
 public class Jugador extends Persona implements Participante {
     private final LocalDate fechaNacimiento;
-    private final GeneroJugador generoJugador;
+    private final Genero generoJugador;
 
-    public Jugador(String nombre, String apellido, String email, String celular, LocalDate fechaNacimiento, GeneroJugador generoJugador) {
+    public Jugador(String nombre, String apellido, String email, String celular, LocalDate fechaNacimiento, Genero generoJugador) {
         super(nombre, apellido, email, celular);
         ASSERTION.assertion( fechaNacimiento != null , "La fecha de nacimiento es requerida");
         this.fechaNacimiento = fechaNacimiento;
@@ -25,7 +25,7 @@ public class Jugador extends Persona implements Participante {
     public LocalDate getFechaNacimiento() {
         return fechaNacimiento;
     }
-    public GeneroJugador getGeneroJugador(){
+    public Genero getGeneroJugador(){
         return generoJugador;
     }
     
@@ -41,12 +41,10 @@ public class Jugador extends Persona implements Participante {
     @Override
     public String getNombreCompleto() {
         return getNombre()+ " "+getApellido();
-
     }
 
     @Override
     public Object getLicencia() {
-        // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'getLicencia'");
     }
 
@@ -55,5 +53,6 @@ public class Jugador extends Persona implements Participante {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'getEstadisticas'");
     }
-}
 
+
+}
