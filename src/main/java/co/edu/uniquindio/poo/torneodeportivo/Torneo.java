@@ -11,6 +11,7 @@ import java.time.LocalDate;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.function.Predicate;
@@ -207,8 +208,6 @@ public class Torneo {
      * @param jugador Jugador que se desea registrar.
      */
     public void registrarJugador(String nombre, Jugador jugador) {
-
-        
         
         var participante = buscarParticipantePorNombre(nombre);
 
@@ -295,13 +294,11 @@ public class Torneo {
                 }
             }
         }
-    
-        // Devolver la colección de enfrentamientos relacionados con el equipo dado.
         return ListaEnfrentamientoEquipo;
     }
-    
-        // Método que devuelve una colección de enfrentamientos que tienen un juez con el número de licencia proporcionado
-public Collection<Enfrentamiento> juecesEnfrentamientos(String licencia) {
+
+    // Método que devuelve una colección de enfrentamientos que tienen un juez con el número de licencia proporcionado
+    public Collection<Enfrentamiento> juecesEnfrentamientos(String licencia) {
     // Se crea una nueva colección para almacenar los enfrentamientos que cumplen con la condición
     Collection<Enfrentamiento> listaEnfrentamientosJuez = new LinkedList<>();
 
@@ -322,8 +319,23 @@ public Collection<Enfrentamiento> juecesEnfrentamientos(String licencia) {
 
     // Se devuelve la lista de enfrentamientos que tienen un juez con el número de licencia especificado
     return listaEnfrentamientosJuez;
+
+    }
+
+    // Método para obtener estadísticas de los equipos
+    public List<Estadisticas> obtenerEstadisticasEquiposOrdenadas() {
+        return equipos.stream()
+                .map(equipo -> equipo.getEstadisticas())
+                .sorted(Comparator
+                        .comparingInt(Estadisticas::getNumeroVictorias)
+                        .thenComparingInt(Estadisticas::getNumeroEmpates)
+                        .thenComparingInt(Estadisticas::getNumeroPerdidas)
+                        .reversed())
+                .collect(Collectors.toList());
+            
+    }
+    
 }
 
+    
 
-  
-}
