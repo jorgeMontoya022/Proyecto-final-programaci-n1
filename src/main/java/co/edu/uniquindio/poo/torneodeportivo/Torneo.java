@@ -294,11 +294,14 @@ public class Torneo {
                 }
             }
         }
+    
+        // Devolver la colección de enfrentamientos relacionados con el equipo dado.
         return ListaEnfrentamientoEquipo;
     }
-
-    // Método que devuelve una colección de enfrentamientos que tienen un juez con el número de licencia proporcionado
-    public Collection<Enfrentamiento> juecesEnfrentamientos(String licencia) {
+    
+    
+// Método que devuelve una colección de enfrentamientos que tienen un juez con el número de licencia proporcionado
+public Collection<Enfrentamiento> juecesEnfrentamientos(String licencia) {
     // Se crea una nueva colección para almacenar los enfrentamientos que cumplen con la condición
     Collection<Enfrentamiento> listaEnfrentamientosJuez = new LinkedList<>();
 
@@ -319,10 +322,16 @@ public class Torneo {
 
     // Se devuelve la lista de enfrentamientos que tienen un juez con el número de licencia especificado
     return listaEnfrentamientosJuez;
+   }
 
-    }
 
+<<<<<<< HEAD
     // Método para obtener estadísticas de los equipos
+=======
+
+
+// Método para obtener estadísticas de los equiposs
+>>>>>>> 0f6e7e37fe5dfb440ad711bb22caf37f85113667
     public List<Estadisticas> obtenerEstadisticasEquiposOrdenadas() {
         return equipos.stream()
                 .map(equipo -> equipo.getEstadisticas())
@@ -334,8 +343,30 @@ public class Torneo {
                 .collect(Collectors.toList());
             
     }
-    
+     
+
+
+
+
 }
 
+
+
+
+
+
+   
+
+
+     
+        
     
+
+
+
+
+
+
+
+
 
