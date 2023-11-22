@@ -14,17 +14,16 @@ import java.util.function.Predicate;
 
 import static co.edu.uniquindio.poo.util.AssertionUtil.ASSERTION;
 
-public record Equipo(String nombre, Genero genero,Estadisticas estadisticas, Persona representante, Collection<Jugador> jugadores ) implements Participante {
+public record Equipo(String nombre, Genero genero, Persona representante, Collection<Jugador> jugadores) implements Participante {
     
-    public Equipo {
+
+
+    public Equipo(String nombre, Genero genero, Persona representante) {
+        this(nombre, genero, representante, new LinkedList<>());
+
         ASSERTION.assertion(nombre != null && !nombre.isBlank(), "El nombre es requerido");
         ASSERTION.assertion(representante != null, "El representante es requerido");
         ASSERTION.assertion(genero != null, "El genero es necesario");
-        
-    }
-
-    public Equipo(String nombre, Genero genero,Estadisticas estadisticas, Persona representante) {
-        this(nombre, genero,estadisticas, representante, new LinkedList<>());
     }
     // validar que el genero del jugador sea igual al del equipo
     private void validarGeneroJugador(Jugador jugador){
