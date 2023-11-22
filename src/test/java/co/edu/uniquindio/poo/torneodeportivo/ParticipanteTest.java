@@ -36,7 +36,7 @@ public class ParticipanteTest {
 
         
         
-        var jugador = new Jugador("Ana", "Ruiz", "anaruiz@email.com", "6073861062",LocalDate.now().minusYears(15), GeneroJugador.FEMENINO);
+        var jugador = new Jugador("Ana", "Ruiz", "anaruiz@email.com", "6073861062",LocalDate.now().minusYears(15), Genero.FEMENINO);
 
         torneo.registrarParticipante(jugador);
         
@@ -58,9 +58,9 @@ public class ParticipanteTest {
 
         var torneo = new Torneo("Copa Mundo", LocalDate.now().plusMonths(1), LocalDate.now().minusDays(15), LocalDate.now().plusDays(15), (byte)24, (byte)18, 0,TipoTorneo.LOCAL, CaracterTorneo.INDIVIDUAL, TorneoGenero.MASCULINO);
 
-        var jugador = new Jugador("Christian", "Candela", "chrcandela@email.com", "6067431234",LocalDate.now().minusYears(15), GeneroJugador.MASCULINO);
+        var jugador = new Jugador("Christian", "Candela", "chrcandela@email.com", "6067431234",LocalDate.now().minusYears(15), Genero.MASCULINO);
         
-        var jugador2 = new Jugador("Christian", "Candela", "ccandela@email.com", "6067431234",LocalDate.now().minusYears(15), GeneroJugador.MASCULINO);
+        var jugador2 = new Jugador("Christian", "Candela", "ccandela@email.com", "6067431234",LocalDate.now().minusYears(15), Genero.MASCULINO);
                 
         torneo.registrarParticipante(jugador);
         assertThrows(Throwable.class,()->torneo.registrarParticipante(jugador2));
@@ -100,7 +100,7 @@ public class ParticipanteTest {
 
         var torneo = new Torneo("Copa Mundo", LocalDate.now().plusMonths(1), LocalDate.now().minusDays(15), LocalDate.now().plusDays(15), (byte)24, (byte)18, 0,TipoTorneo.LOCAL, CaracterTorneo.INDIVIDUAL, TorneoGenero.FEMENINO);
         var representante = new Persona("Robinson", "Pulgarin", "rpulgarin@email.com", "6067359300");
-        var equipo = new Equipo("UniquindioFEM", representante);
+        var equipo = new Equipo("UniquindioFEM", Genero.FEMENINO, representante);
                 
         
         assertThrows(Throwable.class,()->torneo.registrarParticipante(equipo));

@@ -16,24 +16,23 @@ import static co.edu.uniquindio.poo.util.AssertionUtil.ASSERTION;
 
 public record Equipo(String nombre, Genero genero, Persona representante, Collection<Jugador> jugadores ) implements Participante {
     
-    public Equipo {
+    // constructor 
+    public Equipo(String nombre, Genero genero, Persona representante) {
+        this(nombre, genero, representante, new LinkedList<>());
+
         ASSERTION.assertion(nombre != null && !nombre.isBlank(), "El nombre es requerido");
         ASSERTION.assertion(representante != null, "El representante es requerido");
         ASSERTION.assertion(genero != null, "El genero es necesario");
         
     }
-
-    public Equipo(String nombre, Genero genero, Persona representante) {
-        this(nombre, genero, representante, new LinkedList<>());
-    }
     // validar que el genero del jugador sea igual al del equipo
     private void validarGeneroJugador(Jugador jugador){
-        ASSERTION.assertion(jugador.getGeneroJugador() == genero , "El genero del jugador debe ser igual al del equipo");
+        ASSERTION.assertion(jugador.getGeneroJugador() == genero , "El genero del jugador debe ser igual al genero del equipo");
     }
 
     /**
      * Permite registrar un jugador en un equipo siempre y cuando no exista ya un
-     * jugador registrado en el equipo con el mismo nombre y apellido
+     * jugador registrado con el mismo nombre y apellido, ni con un género distinto al del equipo.
      * 
      * @param jugador Jugador que se desea registrar.
      */
