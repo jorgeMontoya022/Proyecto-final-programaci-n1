@@ -49,5 +49,11 @@ public class Jugador extends Persona implements Participante {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'getLicencia'");
     }
+
+    @Override
+    public Object getEstadisticas() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getEstadisticas'");
+    }
 }
 
