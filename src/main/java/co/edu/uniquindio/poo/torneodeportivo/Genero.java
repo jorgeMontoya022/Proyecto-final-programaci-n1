@@ -1,6 +1,6 @@
 package co.edu.uniquindio.poo.torneodeportivo;
 
-public enum GeneroJugador {
+public enum Genero {
     FEMENINO,
     MASCULINO
 }

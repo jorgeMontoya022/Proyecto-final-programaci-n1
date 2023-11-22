@@ -32,9 +32,9 @@ public class JugadorTest {
         // {Christian,Candela,chrcandela@email.com,6067431234, fechaActual - 15 años}
 
         var representante = new Persona("Robinson", "Pulgarin", "rpulgarin@email.com", "6067359300");
-        var equipo = new Equipo("Uniquindio", representante);
+        var equipo = new Equipo("Uniquindio", Genero.MASCULINO, representante);
         var jugador = new Jugador("Christian", "Candela", "chrcandela@email.com", "6067431234",
-                LocalDate.now().minusYears(15), GeneroJugador.MASCULINO);
+                LocalDate.now().minusYears(15), Genero.MASCULINO);
 
         equipo.registrarJugador(jugador);
 
@@ -57,12 +57,14 @@ public class JugadorTest {
         // Representante{Robinson,Pulgarin,rpulgarin@email.com,6067359300}, Jugador
         // {Laura,Garcia,lauragarcia@email.com,6067431234, fechaActual - 15 años}
 
-        Torneo torneo = new Torneo("Copa Mundo", LocalDate.now().plusMonths(1), LocalDate.now().minusDays(15), LocalDate.now().plusDays(15), (byte) 24, (byte) 18, 0, TipoTorneo.LOCAL, CaracterTorneo.GRUPAL, TorneoGenero.MASCULINO);
+        Torneo torneo = new Torneo("Copa Mundo", LocalDate.now().plusMonths(1), LocalDate.now().minusDays(15),
+                LocalDate.now().plusDays(15), (byte) 24, (byte) 18, 0, TipoTorneo.LOCAL, CaracterTorneo.GRUPAL,
+                TorneoGenero.MASCULINO);
 
         var representante = new Persona("Robinson", "Pulgarin", "rpulgarin@email.com", "6067359300");
-        var equipo = new Equipo("UniquindioFEM", representante);
+        var equipo = new Equipo("UniquindioFEM", Genero.FEMENINO, representante);
         var jugador = new Jugador("Laura", "Garcia", "lauragarcia@email.com", "6067431234",
-                LocalDate.now().minusYears(15), GeneroJugador.FEMENINO);
+                LocalDate.now().minusYears(15), Genero.FEMENINO);
 
         torneo.registrarParticipante(equipo);
         torneo.registrarJugador("UniquindioFEM", jugador);
@@ -92,9 +94,9 @@ public class JugadorTest {
                 TorneoGenero.MASCULINO);
 
         var representante = new Persona("Robinson", "Pulgarin", "rpulgarin@email.com", "6067359300");
-        var equipo = new Equipo("UniquindioMasculino", representante);
+        var equipo = new Equipo("UniquindioMasculino", Genero.MASCULINO, representante);
         var jugador = new Jugador("Christian", "Candela", "chrcandela@email.com", "6038917552",
-                LocalDate.now().minusYears(21), GeneroJugador.MASCULINO);
+                LocalDate.now().minusYears(21), Genero.MASCULINO);
 
         torneo.registrarParticipante(equipo);
         torneo.registrarJugador("UniquindioMasculino", jugador);
@@ -131,8 +133,8 @@ public class JugadorTest {
                 TorneoGenero.MASCULINO);
 
         var representante = new Persona("Robinson", "Pulgarin", "rpulgarin@email.com", "6067359300");
-        var equipo = new Equipo("Uniquindio", representante);
-        var jugador = new Jugador("Ana", "Ruiz", "anaruiz@email.com", "6073861062", LocalDate.now().minusYears(21), GeneroJugador.MASCULINO);
+        var equipo = new Equipo("Uniquindio",Genero.MASCULINO, representante);
+        var jugador = new Jugador("Ana", "Ruiz", "anaruiz@email.com", "6073861062", LocalDate.now().minusYears(21), Genero.MASCULINO);
 
         torneo.registrarParticipante(equipo);
         assertThrows(Throwable.class, () -> torneo.registrarJugador("Uniquindio", jugador));
@@ -166,8 +168,8 @@ public class JugadorTest {
                 TorneoGenero.FEMENINO);
 
         var representante = new Persona("Robinson", "Pulgarin", "rpulgarin@email.com", "6067359300");
-        var equipo = new Equipo("Uniquindio", representante);
-        var jugador = new Jugador("Ana", "Ruiz", "anaruiz@email.com", "6073861062", LocalDate.now().minusYears(15), GeneroJugador.FEMENINO);
+        var equipo = new Equipo("Uniquindio", Genero.FEMENINO, representante);
+        var jugador = new Jugador("Ana", "Ruiz", "anaruiz@email.com", "6073861062", LocalDate.now().minusYears(15), Genero.FEMENINO);
 
         torneo.registrarParticipante(equipo);
         torneo.setFechaCierreInscripciones(LocalDate.now().minusDays(1));
@@ -189,11 +191,11 @@ public class JugadorTest {
         // {Christian,Candela,chrcandela@email.com,6067431234, fechaActual - 15 años}
 
         var representante = new Persona("Robinson", "Pulgarin", "rpulgarin@email.com", "6067359300");
-        var equipo = new Equipo("UniquindioMasculino", representante);
+        var equipo = new Equipo("UniquindioMasculino", Genero.MASCULINO, representante);
         var jugador = new Jugador("Christian", "Candela", "chrcandela@email.com", "6067431234",
-                LocalDate.now().minusYears(15), GeneroJugador.MASCULINO);
+                LocalDate.now().minusYears(15), Genero.MASCULINO);
         var jugador2 = new Jugador("Christian", "Candela", "ccandela@email.com", "6067431235",
-                LocalDate.now().minusYears(15), GeneroJugador.MASCULINO);
+                LocalDate.now().minusYears(15), Genero.MASCULINO);
         equipo.registrarJugador(jugador);
         assertThrows(Throwable.class, () -> equipo.registrarJugador(jugador2));
 
@@ -214,13 +216,13 @@ public class JugadorTest {
          var torneo = new Torneo("Copa Mundo", LocalDate.now().plusMonths(1), LocalDate.now().minusDays(15), LocalDate.now().plusDays(15), (byte)24, (byte)18, 0,TipoTorneo.LOCAL, CaracterTorneo.GRUPAL, TorneoGenero.FEMENINO);
 
         var representante = new Persona("Robinson", "Pulgarin", "rpulgarin@email.com", "6067359300");
-        var equipo = new Equipo("UniquindioFEM", representante);
-        var equipo2 = new Equipo("QuindíoFEM", representante);
+        var equipo = new Equipo("UniquindioFEM", Genero.FEMENINO, representante);
+        var equipo2 = new Equipo("QuindíoFEM", Genero.FEMENINO, representante);
         torneo.registrarParticipante(equipo);
         torneo.registrarParticipante(equipo2);
 
-        var jugador = new Jugador("Laura", "Garcia", "lauragarcia@email.com", "6067431234",LocalDate.now().minusYears(15), GeneroJugador.FEMENINO);
-        var jugador2 = new Jugador("Laura", "Garcia", "lauragarcia@email.com", "6067431234",LocalDate.now().minusYears(15),GeneroJugador.FEMENINO);
+        var jugador = new Jugador("Laura", "Garcia", "lauragarcia@email.com", "6067431234",LocalDate.now().minusYears(15), Genero.FEMENINO);
+        var jugador2 = new Jugador("Laura", "Garcia", "lauragarcia@email.com", "6067431234",LocalDate.now().minusYears(15),Genero.FEMENINO);
                 
         torneo.registrarJugador("UniquindioFEM",jugador);
         assertThrows(Throwable.class,()->torneo.registrarJugador("QuindíoFEM",jugador2));
@@ -229,13 +231,18 @@ public class JugadorTest {
         
     } 
 
-
-   
+    @Test 
+    public void ingresoTorneoInvalido(){
         
-    
+        Torneo torneo = new Torneo("Copa Mundo", LocalDate.now().plusMonths(1), LocalDate.now().minusDays(15),
+                LocalDate.now().plusDays(15), (byte) 24, (byte) 18, 0, TipoTorneo.LOCAL, CaracterTorneo.GRUPAL,
+                TorneoGenero.MASCULINO);
 
-    
-    
+        var jugador = new Jugador("Juan", "Diaz", "diaz.com.co", "3124544334",  LocalDate.now().minusYears(15) , null);
+
+        assertThrows(Throwable.class,()->torneo.registrarJugador("UniquindioFc", jugador));
+       
+    }
 
 }
 

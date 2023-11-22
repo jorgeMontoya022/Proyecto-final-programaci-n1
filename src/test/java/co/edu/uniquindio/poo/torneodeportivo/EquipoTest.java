@@ -35,7 +35,7 @@ public class EquipoTest {
 
         var representante = new Persona("Robinson", "Pulgarin", "rpulgarin@email.com", "6067359300");
 
-        var equipo = new Equipo("UniquindioMasculino", GeneroJugador.MASCULINO, representante);
+        var equipo = new Equipo("UniquindioMasculino", Genero.MASCULINO, representante);
 
         torneo.registrarParticipante(equipo);
 
@@ -59,8 +59,8 @@ public class EquipoTest {
 
         var representante = new Persona("Robinson", "Pulgarin", "rpulgarin@email.com", "6067359300");
 
-        var equipo = new Equipo("UniquindioFEM", GeneroJugador.FEMENINO, representante);
-        var equipo2 = new Equipo("UniquindioFEM", GeneroJugador.FEMENINO, representante);
+        var equipo = new Equipo("UniquindioFEM", Genero.FEMENINO, representante);
+        var equipo2 = new Equipo("UniquindioFEM", Genero.FEMENINO, representante);
         torneo.registrarParticipante(equipo);
 
         assertThrows(Throwable.class, ()-> torneo.registrarParticipante(equipo2));
@@ -82,7 +82,7 @@ public class EquipoTest {
 
         var representante = new Persona("Robinson", "Pulgarin", "rpulgarin@email.com", "6067359300");
 
-        var equipo = new Equipo("UniquindioMasculino", GeneroJugador.MASCULINO, representante);
+        var equipo = new Equipo("UniquindioMasculino", Genero.MASCULINO, representante);
 
         assertThrows(Throwable.class, ()-> torneo.registrarParticipante(equipo));
         
@@ -103,7 +103,7 @@ public class EquipoTest {
 
         var representante = new Persona("Robinson", "Pulgarin", "rpulgarin@email.com", "6067359300");
 
-        var equipo = new Equipo("Uniquindio", GeneroJugador.MASCULINO, representante);
+        var equipo = new Equipo("Uniquindio", Genero.MASCULINO, representante);
 
         assertThrows(Throwable.class, ()-> torneo.registrarParticipante(equipo));
         
