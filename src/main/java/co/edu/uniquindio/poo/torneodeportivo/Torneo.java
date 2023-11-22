@@ -10,11 +10,14 @@ package co.edu.uniquindio.poo.torneodeportivo;
 import java.time.LocalDate;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.function.Predicate;
+import java.util.stream.Collectors;
+
 import static co.edu.uniquindio.poo.util.AssertionUtil.ASSERTION;
 
 public class Torneo {
@@ -325,20 +328,19 @@ public Collection<Enfrentamiento> juecesEnfrentamientos(String licencia) {
    }
 
 
-<<<<<<< HEAD
-    // Método para obtener estadísticas de los equipos
-=======
+
+   
 
 
-// Método para obtener estadísticas de los equiposs
->>>>>>> 0f6e7e37fe5dfb440ad711bb22caf37f85113667
+
+
     public List<Estadisticas> obtenerEstadisticasEquiposOrdenadas() {
         return equipos.stream()
                 .map(equipo -> equipo.getEstadisticas())
                 .sorted(Comparator
-                        .comparingInt(Estadisticas::getNumeroVictorias)
-                        .thenComparingInt(Estadisticas::getNumeroEmpates)
-                        .thenComparingInt(Estadisticas::getNumeroPerdidas)
+                        .comparingInt(Estadisticas::getVictorias)
+                        .thenComparingInt(Estadisticas::getEmpates)
+                        .thenComparingInt(Estadisticas::getPerdidos)
                         .reversed())
                 .collect(Collectors.toList());
             
